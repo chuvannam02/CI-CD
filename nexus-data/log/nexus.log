@@ -1,0 +1,983 @@
+2025-10-30 16:25:04,460+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.configuration.NexusProperties - nexus.properties: {ssl.etc=/opt/sonatype/nexus/etc/ssl, nexus-edition=nexus-oss-edition, java.specification.version=17, nexus-db-feature=nexus-datastore-mybatis, sun.jnu.encoding=UTF-8, java.class.path=/opt/sonatype/nexus/bin/sonatype-nexus-repository-3.85.0-03.jar:/opt/sonatype/nexus/../sonatype-work/nexus3/etc, karaf.etc=/opt/sonatype/nexus/etc/karaf, java.vm.vendor=Red Hat, Inc., sun.arch.data.model=64, java.vendor.url=https://www.redhat.com/, nexus.session.enabled=true, user.timezone=GMT, org.jboss.logging.provider=slf4j, application-port=8081, java.vm.specification.version=17, os.name=Linux, nexus.scripts.allowCreation=false, sun.java.launcher=SUN_STANDARD, user.country=US, karaf.data=/nexus-data, sun.boot.library.path=/usr/lib/jvm/java-17-openjdk-17.0.16.0.8-2.el9.x86_64/lib, sun.java.command=org.springframework.boot.loader.launch.PropertiesLauncher, logging.register-shutdown-hook=false, nexus.zero.downtime.enabled=false, jdk.debug=release, karaf.instances=/opt/sonatype/nexus/instances, sun.cpu.endian=little, user.home=/opt/sonatype/nexus, user.language=en, java.specification.vendor=Oracle Corporation, java.version.date=2025-07-15, java.home=/usr/lib/jvm/java-17-openjdk-17.0.16.0.8-2.el9.x86_64, logging.config=etc/logback/logback.xml, nexus-features=nexus-core-feature, file.separator=/, java.vm.compressedOopsMode=Zero based, line.separator=
+, nexus.onboarding.enabled=true, java.vm.specification.vendor=Oracle Corporation, java.specification.name=Java Platform API Specification, jetty.etc=/opt/sonatype/nexus/etc/jetty, FILE_LOG_CHARSET=UTF-8, java.awt.headless=true, spring.config.location=etc/default-application.properties, application-host=0.0.0.0, nexus-context-path=/, java.util.logging.config.file=/opt/sonatype/nexus/etc/java.util.logging.properties, java.protocol.handler.pkgs=org.springframework.boot.loader.net.protocol, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, karaf.home=/opt/sonatype/nexus, nexus.http.denyframe.enabled=true, java.runtime.version=17.0.16+8-LTS, user.name=nexus, path.separator=:, nexus.jwt.enabled=false, os.version=5.15.167.4-microsoft-standard-WSL2, java.runtime.name=OpenJDK Runtime Environment, nexus-args=/opt/sonatype/nexus/etc/jetty/jetty.xml,/opt/sonatype/nexus/etc/jetty/jetty-http.xml,/opt/sonatype/nexus/etc/jetty/jetty-requestlog.xml, nexus.quartz.jobstore.jdbc=true, file.encoding=UTF-8, java.vm.name=OpenJDK 64-Bit Server VM, java.vendor.version=(Red_Hat-17.0.16.0.8-1), java.util.prefs.userRoot=/nexus-data/javaprefs, java.vendor.url.bug=https://access.redhat.com/support/cases/, java.io.tmpdir=/opt/sonatype/nexus/../sonatype-work/nexus3/tmp, logback.etc=/opt/sonatype/nexus/etc/logback, nexus.security.oauth2.enabled=false, java.version=17.0.16, user.dir=/opt/sonatype/nexus, os.arch=amd64, fabric.etc=/opt/sonatype/nexus/etc/fabric, java.vm.specification.name=Java Virtual Machine Specification, PID=1, nexus.change.repo.blobstore.task.enabled=true, CONSOLE_LOG_CHARSET=UTF-8, native.encoding=UTF-8, java.library.path=/opt/sonatype/nexus/lib:/opt/sonatype/nexus/lib:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib, java.vm.info=mixed mode, sharing, java.vendor=Red Hat, Inc., java.vm.version=17.0.16+8-LTS, java.specification.maintenance.version=1, karaf.base=/opt/sonatype/nexus, sun.io.unicode.encoding=UnicodeLittle, karaf.log=/opt/sonatype/nexus/../sonatype-work/nexus3/log, java.class.version=61.0}
+2025-10-30 16:25:04,471+0000 INFO  [main]  *SYSTEM com.sonatype.nexus.bootstrap.entrypoint.pro.SonatypeNexusRepositoryApplication - Starting SonatypeNexusRepositoryApplication v3.85.0-03 using Java 17.0.16 with PID 1 (/opt/sonatype/nexus/bin/sonatype-nexus-repository-3.85.0-03.jar started by nexus in /opt/sonatype/nexus)
+2025-10-30 16:25:04,473+0000 INFO  [main]  *SYSTEM com.sonatype.nexus.bootstrap.entrypoint.pro.SonatypeNexusRepositoryApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-30 16:25:06,364+0000 INFO  [main]  *SYSTEM java.util.prefs - Created user preferences directory.
+2025-10-30 16:25:06,472+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.ApplicationLauncher - Starting nexus with edition COMMUNITY
+2025-10-30 16:25:06,704+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.SpringComponentScan - Scanning for components in packages: [org.sonatype.nexus, com.sonatype.nexus]
+2025-10-30 16:25:18,529+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.quartz.internal.QuartzSchedulerProvider - Thread-pool size: 20, Thread-pool priority: 5
+2025-10-30 16:25:18,604+0000 INFO  [main]  *SYSTEM org.apache.shiro.nexus.NexusWebSessionManager - Global session timeout: 1800000 ms
+2025-10-30 16:25:18,605+0000 INFO  [main]  *SYSTEM org.apache.shiro.nexus.NexusWebSessionManager - Session-cookie prototype: name=NXSESSIONID, secure=true
+2025-10-30 16:25:19,273+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.log.overrides.file.LogbackLoggerOverrides - File: /nexus-data/etc/logback/logback-overrides.xml
+2025-10-30 16:25:19,464+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.webresources.WebResourceServlet - Max-age: 30 days (2592000 seconds)
+2025-10-30 16:25:19,475+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.wonderland.DownloadServiceImpl - Downloads directory: /nexus-data/downloads
+2025-10-30 16:25:20,460+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.atlas.SupportZipGeneratorImpl - Maximum included file size: 30 megabytes
+2025-10-30 16:25:20,461+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.atlas.SupportZipGeneratorImpl - Maximum ZIP file size: 50 megabytes
+2025-10-30 16:25:20,804+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle - UI plugin descriptors:
+2025-10-30 16:25:20,804+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-rapture
+2025-10-30 16:25:20,805+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-coreui-plugin
+2025-10-30 16:25:20,806+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle - ExtJS UI plugin descriptors:
+2025-10-30 16:25:20,807+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-rapture
+2025-10-30 16:25:20,808+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-rutauth-plugin
+2025-10-30 16:25:20,808+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-proximanova-plugin
+2025-10-30 16:25:20,809+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-coreui-plugin
+2025-10-30 16:25:20,810+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-cargo
+2025-10-30 16:25:20,811+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-composer
+2025-10-30 16:25:20,811+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-onboarding-plugin
+2025-10-30 16:25:20,812+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-maven
+2025-10-30 16:25:20,812+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-docker
+2025-10-30 16:25:20,813+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-rubygems
+2025-10-30 16:25:20,814+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-npm
+2025-10-30 16:25:20,815+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-nuget
+2025-10-30 16:25:20,815+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-pypi
+2025-10-30 16:25:20,816+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-analytics-plugin
+2025-10-30 16:25:21,132+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.script.ScriptEngineManagerProvider - Detected 1 engine-factories
+2025-10-30 16:25:21,134+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.script.ScriptEngineManagerProvider - Engine-factory: Groovy Scripting Engine v2.0; language=Groovy, version=3.0.19, names=[groovy, Groovy], mime-types=[application/x-groovy], extensions=[groovy]
+2025-10-30 16:25:21,135+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.script.ScriptEngineManagerProvider - Default language: groovy
+2025-10-30 16:25:22,290+0000 INFO  [main]  *SYSTEM org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.0.Final
+2025-10-30 16:25:23,435+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.cache.internal.ehcache.EhCacheManagerProvider - Creating cache-manager with configuration: file:/opt/sonatype/nexus/etc/fabric/ehcache.xml
+2025-10-30 16:25:24,313+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache MALICIOUS_RISK_ON_DISK_CACHE will be supplemented by template nexus-default
+2025-10-30 16:25:24,398+0000 INFO  [main]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'MALICIOUS_RISK_ON_DISK_CACHE' created in EhcacheManager.
+2025-10-30 16:25:24,413+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=MALICIOUS_RISK_ON_DISK_CACHE
+2025-10-30 16:25:24,415+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=MALICIOUS_RISK_ON_DISK_CACHE
+2025-10-30 16:25:24,421+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache ENABLED_REGISTRIES will be supplemented by template nexus-default
+2025-10-30 16:25:24,426+0000 INFO  [main]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'ENABLED_REGISTRIES' created in EhcacheManager.
+2025-10-30 16:25:24,428+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=ENABLED_REGISTRIES
+2025-10-30 16:25:24,429+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=ENABLED_REGISTRIES
+2025-10-30 16:25:24,805+0000 INFO  [main]  *SYSTEM org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - Inconsistent constructor declaration on bean with name 'maliciousRiskOnDiskAnalytics': single autowire-marked constructor flagged as optional - this constructor is effectively required since there is no default constructor to fall back to: public com.sonatype.analytics.internal.MaliciousRiskOnDiskAnalytics(com.sonatype.nexus.risk.visualizer.MaliciousRiskService,java.lang.Boolean)
+2025-10-30 16:25:25,198+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - Starting jetty
+2025-10-30 16:25:25,218+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - Applying configuration: file:/opt/sonatype/nexus/etc/jetty/jetty.xml
+2025-10-30 16:25:25,784+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - Applying configuration: file:/opt/sonatype/nexus/etc/jetty/jetty-http.xml
+2025-10-30 16:25:25,843+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - Applying configuration: file:/opt/sonatype/nexus/etc/jetty/jetty-requestlog.xml
+2025-10-30 16:25:25,937+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - Starting: oejs.Server@250f9799{STOPPED}[12.0.17,sto=5000]
+2025-10-30 16:25:25,945+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.server.Server - jetty-12.0.17; built: 2025-03-03T13:15:05.903Z; git: 14d19c268e4cb09afc312b5255a4cbb7a95c5cb6; jvm 17.0.16+8-LTS
+2025-10-30 16:25:26,312+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.session.DefaultSessionIdManager - Session workerName=node0
+2025-10-30 16:25:26,354+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.internal.NexusServletContextListener - Running lifecycle phases [KERNEL, STORAGE, RESTORE, UPGRADE, SCHEMAS, EVENTS, SECURITY, SERVICES, REPOSITORIES, CAPABILITIES, TASKS]
+2025-10-30 16:25:26,569+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Indexing lifecycle managed components up to phase TASKS
+2025-10-30 16:25:26,571+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start KERNEL
+2025-10-30 16:25:26,577+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.log.LogbackLogManager - Configuring
+2025-10-30 16:25:26,595+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start STORAGE
+2025-10-30 16:25:26,626+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.self.hosted.datastore.DataStoreConfigurationFileSource - Loaded 'nexus' data store configuration from properties file (h2)
+2025-10-30 16:25:26,677+0000 INFO  [jetty-main-1]  *SYSTEM com.zaxxer.hikari.HikariDataSource - nexus - Starting...
+2025-10-30 16:25:27,125+0000 INFO  [jetty-main-1]  *SYSTEM com.zaxxer.hikari.HikariDataSource - nexus - Start completed.
+2025-10-30 16:25:27,128+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Loading MyBatis configuration from /opt/sonatype/nexus/etc/fabric/mybatis.xml
+2025-10-30 16:25:27,242+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - MyBatis databaseId: H2
+2025-10-30 16:25:27,494+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DeploymentIdDAO
+2025-10-30 16:25:27,558+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NodeIdDAO
+2025-10-30 16:25:27,586+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AnonymousConfigurationDAO
+2025-10-30 16:25:27,622+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CPrivilegeDAO
+2025-10-30 16:25:27,639+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CRoleDAO
+2025-10-30 16:25:27,656+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CUserRoleMappingDAO
+2025-10-30 16:25:27,671+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CUserDAO
+2025-10-30 16:25:27,697+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RealmConfigurationDAO
+2025-10-30 16:25:27,742+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for SecretsDAO
+2025-10-30 16:25:27,789+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for SoftDeletedBlobsDAO
+2025-10-30 16:25:27,876+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CleanupPolicyDAO
+2025-10-30 16:25:27,915+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CapabilityStorageItemDAO
+2025-10-30 16:25:27,932+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for EmailConfigurationDAO
+2025-10-30 16:25:27,951+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HttpClientConfigurationDAO
+2025-10-30 16:25:27,966+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ApiKeyDAO
+2025-10-30 16:25:27,988+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ApiKeyV2DAO
+2025-10-30 16:25:28,003+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for SelectorConfigurationDAO
+2025-10-30 16:25:28,016+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NexusKeyValueDAO
+2025-10-30 16:25:28,030+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for QuartzDAO
+2025-10-30 16:25:28,082+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConfigurationDAO
+2025-10-30 16:25:28,095+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for BlobStoreConfigurationDAO
+2025-10-30 16:25:28,110+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RoutingRuleDAO
+2025-10-30 16:25:28,121+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for BlobStoreMetricsDAO
+2025-10-30 16:25:28,134+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for UpgradeTaskDAO
+2025-10-30 16:25:28,145+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ScriptDAO
+2025-10-30 16:25:28,157+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for LdapConfigurationDAO
+2025-10-30 16:25:28,169+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for KeyStoreDAO
+2025-10-30 16:25:28,183+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for TrustedSSLCertificateDAO
+2025-10-30 16:25:28,211+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComponentApplicationScanScheduleDAO
+2025-10-30 16:25:28,245+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComponentApplicationScanDAO
+2025-10-30 16:25:28,287+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ReconcilePlanDetailsDAO
+2025-10-30 16:25:28,343+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ReconcilePlanDAO
+2025-10-30 16:25:28,362+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for FirewallIgnorePatternsDAO
+2025-10-30 16:25:28,373+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RepositoryHealthCheckConfigurationDAO
+2025-10-30 16:25:28,385+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for MalwareRemediatorTaskDAO
+2025-10-30 16:25:28,396+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RepositoryMetricsDAO
+2025-10-30 16:25:28,414+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NodeHeartbeatDAO
+2025-10-30 16:25:28,435+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AggregatedMetricsDAO
+2025-10-30 16:25:28,462+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for MetricDAO
+2025-10-30 16:25:28,505+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptContentRepositoryDAO
+2025-10-30 16:25:28,529+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptAssetBlobDAO
+2025-10-30 16:25:28,581+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptComponentDAO
+2025-10-30 16:25:28,685+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptAssetDAO
+2025-10-30 16:25:28,705+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptBrowseNodeDAO
+2025-10-30 16:25:28,721+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptKeyValueDAO
+2025-10-30 16:25:28,733+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for Maven2ContentRepositoryDAO
+2025-10-30 16:25:28,755+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for Maven2AssetBlobDAO
+2025-10-30 16:25:28,819+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for Maven2ComponentDAO
+2025-10-30 16:25:28,871+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for Maven2AssetDAO
+2025-10-30 16:25:28,890+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for Maven2BrowseNodeDAO
+2025-10-30 16:25:28,916+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RawContentRepositoryDAO
+2025-10-30 16:25:28,949+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RawAssetBlobDAO
+2025-10-30 16:25:29,008+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RawComponentDAO
+2025-10-30 16:25:29,037+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RawAssetDAO
+2025-10-30 16:25:29,059+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RawBrowseNodeDAO
+2025-10-30 16:25:29,073+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CargoContentRepositoryDAO
+2025-10-30 16:25:29,089+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CargoAssetBlobDAO
+2025-10-30 16:25:29,111+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CargoComponentDAO
+2025-10-30 16:25:29,136+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CargoAssetDAO
+2025-10-30 16:25:29,152+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CargoBrowseNodeDAO
+2025-10-30 16:25:29,165+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CocoapodsContentRepositoryDAO
+2025-10-30 16:25:29,177+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CocoapodsAssetBlobDAO
+2025-10-30 16:25:29,196+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CocoapodsComponentDAO
+2025-10-30 16:25:29,220+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CocoapodsAssetDAO
+2025-10-30 16:25:29,235+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CocoapodsBrowseNodeDAO
+2025-10-30 16:25:29,249+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComposerContentRepositoryDAO
+2025-10-30 16:25:29,262+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComposerAssetBlobDAO
+2025-10-30 16:25:29,282+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComposerComponentDAO
+2025-10-30 16:25:29,305+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComposerAssetDAO
+2025-10-30 16:25:29,318+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComposerBrowseNodeDAO
+2025-10-30 16:25:29,331+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConanContentRepositoryDAO
+2025-10-30 16:25:29,354+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConanAssetBlobDAO
+2025-10-30 16:25:29,405+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConanComponentDAO
+2025-10-30 16:25:29,452+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConanAssetDAO
+2025-10-30 16:25:29,487+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConanBrowseNodeDAO
+2025-10-30 16:25:29,524+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CondaContentRepositoryDAO
+2025-10-30 16:25:29,560+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CondaAssetBlobDAO
+2025-10-30 16:25:29,600+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CondaComponentDAO
+2025-10-30 16:25:29,631+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CondaAssetDAO
+2025-10-30 16:25:29,648+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CondaBrowseNodeDAO
+2025-10-30 16:25:29,663+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerContentRepositoryDAO
+2025-10-30 16:25:29,681+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerAssetBlobDAO
+2025-10-30 16:25:29,707+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerComponentDAO
+2025-10-30 16:25:29,729+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerAssetDAO
+2025-10-30 16:25:29,750+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerBrowseNodeDAO
+2025-10-30 16:25:29,768+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerForeignLayersDAO
+2025-10-30 16:25:29,781+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GitLfsContentRepositoryDAO
+2025-10-30 16:25:29,798+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GitLfsAssetBlobDAO
+2025-10-30 16:25:29,818+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GitLfsComponentDAO
+2025-10-30 16:25:29,841+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GitLfsAssetDAO
+2025-10-30 16:25:29,859+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GitLfsBrowseNodeDAO
+2025-10-30 16:25:29,876+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GoContentRepositoryDAO
+2025-10-30 16:25:29,892+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GoAssetBlobDAO
+2025-10-30 16:25:29,912+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GoComponentDAO
+2025-10-30 16:25:29,933+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GoAssetDAO
+2025-10-30 16:25:29,955+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GoBrowseNodeDAO
+2025-10-30 16:25:29,969+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmContentRepositoryDAO
+2025-10-30 16:25:29,986+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmAssetBlobDAO
+2025-10-30 16:25:30,007+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmComponentDAO
+2025-10-30 16:25:30,026+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmAssetDAO
+2025-10-30 16:25:30,040+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmBrowseNodeDAO
+2025-10-30 16:25:30,054+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmKeyValueDAO
+2025-10-30 16:25:30,069+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HuggingFaceContentRepositoryDAO
+2025-10-30 16:25:30,089+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HuggingFaceAssetBlobDAO
+2025-10-30 16:25:30,114+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HuggingFaceComponentDAO
+2025-10-30 16:25:30,135+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HuggingFaceAssetDAO
+2025-10-30 16:25:30,155+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HuggingFaceBrowseNodeDAO
+2025-10-30 16:25:30,169+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NpmContentRepositoryDAO
+2025-10-30 16:25:30,180+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NpmAssetBlobDAO
+2025-10-30 16:25:30,209+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NpmComponentDAO
+2025-10-30 16:25:30,239+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NpmAssetDAO
+2025-10-30 16:25:30,254+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NpmBrowseNodeDAO
+2025-10-30 16:25:30,272+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NugetContentRepositoryDAO
+2025-10-30 16:25:30,290+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NugetAssetBlobDAO
+2025-10-30 16:25:30,314+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NugetComponentDAO
+2025-10-30 16:25:30,344+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NugetAssetDAO
+2025-10-30 16:25:30,357+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NugetBrowseNodeDAO
+2025-10-30 16:25:30,373+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for P2ContentRepositoryDAO
+2025-10-30 16:25:30,391+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for P2AssetBlobDAO
+2025-10-30 16:25:30,410+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for P2ComponentDAO
+2025-10-30 16:25:30,438+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for P2AssetDAO
+2025-10-30 16:25:30,452+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for P2BrowseNodeDAO
+2025-10-30 16:25:30,470+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for PypiContentRepositoryDAO
+2025-10-30 16:25:30,489+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for PypiAssetBlobDAO
+2025-10-30 16:25:30,517+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for PypiComponentDAO
+2025-10-30 16:25:30,550+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for PypiAssetDAO
+2025-10-30 16:25:30,573+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for PypiBrowseNodeDAO
+2025-10-30 16:25:30,591+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RContentRepositoryDAO
+2025-10-30 16:25:30,611+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RAssetBlobDAO
+2025-10-30 16:25:30,629+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RComponentDAO
+2025-10-30 16:25:30,650+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RAssetDAO
+2025-10-30 16:25:30,663+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RBrowseNodeDAO
+2025-10-30 16:25:30,677+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RubygemsContentRepositoryDAO
+2025-10-30 16:25:30,696+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RubygemsAssetBlobDAO
+2025-10-30 16:25:30,719+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RubygemsComponentDAO
+2025-10-30 16:25:30,739+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RubygemsAssetDAO
+2025-10-30 16:25:30,751+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RubygemsBrowseNodeDAO
+2025-10-30 16:25:30,765+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumContentRepositoryDAO
+2025-10-30 16:25:30,781+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumAssetBlobDAO
+2025-10-30 16:25:30,806+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumComponentDAO
+2025-10-30 16:25:30,831+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumAssetDAO
+2025-10-30 16:25:30,843+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumBrowseNodeDAO
+2025-10-30 16:25:30,854+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumKeyValueDAO
+2025-10-30 16:25:30,910+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.self.hosted.node.NodeIdInitializerImpl - No node-id found. Attempting to migrate from KeyStore
+2025-10-30 16:25:30,916+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.self.hosted.node.NodeIdInitializerImpl - Unable to get node-id from KeyStore - Generating a new node-id
+2025-10-30 16:25:30,927+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.node.datastore.LocalNodeAccess - ID: 1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c
+2025-10-30 16:25:30,935+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.elasticsearch.internal.NodeProvider - Creating node with config: /opt/sonatype/nexus/etc/fabric/elasticsearch.yml
+2025-10-30 16:25:31,098+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] version[2.4.3], pid[1], build[d38a34e/2016-12-07T16:28:56Z]
+2025-10-30 16:25:31,099+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] initializing ...
+2025-10-30 16:25:31,105+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.plugins - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] modules [], plugins [content-auth-plugin], sites []
+2025-10-30 16:25:31,166+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.env - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] using [1] data paths, mounts [[/nexus-data (D:\)]], net usable_space [33.2gb], net total_space [179.9gb], spins? [possibly], types [9p]
+2025-10-30 16:25:31,167+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.env - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] heap size [2.6gb], compressed ordinary object pointers [true]
+2025-10-30 16:25:32,880+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] initialized
+2025-10-30 16:25:32,881+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] starting ...
+2025-10-30 16:25:32,884+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.transport - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] publish_address {local[1]}, bound_addresses {local[1]}
+2025-10-30 16:25:32,887+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.discovery - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] nexus/cVEstQPPSeWGn2b3zIZXiQ
+2025-10-30 16:25:32,896+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.cluster.service - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] new_master {1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c}{cVEstQPPSeWGn2b3zIZXiQ}{local}{local[1]}{local=true, master=true}, reason: local-disco-initial_connect(master)
+2025-10-30 16:25:32,902+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] started
+2025-10-30 16:25:32,956+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.gateway - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] recovered [0] indices into cluster_state
+2025-10-30 16:25:33,119+0000 WARN  [periodic-5-thread-1]  *SYSTEM org.sonatype.nexus.scheduling.internal.PeriodicJobServiceImpl - Failed to terminate thread pool in allotted time
+2025-10-30 16:25:33,135+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start RESTORE
+2025-10-30 16:25:33,139+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start UPGRADE
+2025-10-30 16:25:33,484+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.docker.internal.datastore.upgrade.DockerUpgrade_1_2 - Updated 0 misconfigured docker asset(s) in all repositories: set docker asset_kind='BLOB'
+2025-10-30 16:25:33,489+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.upgrades.JobDescriptionMigrationStep_1_3 - Changing 'description' column type from varchar(250) to text in table qrtz_job_details
+2025-10-30 16:25:33,490+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.upgrades.JobDescriptionMigrationStep_1_3 - Changing 'description' column type from varchar(250) to text in table qrtz_triggers
+2025-10-30 16:25:33,494+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.content.maven.upgrade.MavenUpgrade_1_4 - Searching for maven repositories that need a search index update
+2025-10-30 16:25:33,503+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.content.maven.upgrade.MavenUpgrade_1_7 - Searching for maven repositories that need a search index update
+2025-10-30 16:25:33,510+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.cleanup.internal.storage.upgrade.CleanupConfigUpgrade_1_9 - Updated 0 misconfigured cleanup policies: set format='ALL_FORMATS'
+2025-10-30 16:25:33,514+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.SearchIndexUpgrade_1_10 - Searching for repositories that need a search index update
+2025-10-30 16:25:33,522+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.DatastoreBlobReconciliationLogMigrator_1_11 - Found reconciliation logs for 0 blob stores to migrate
+2025-10-30 16:25:33,554+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.SearchIndexUpgrade_1_15 - Searching for repositories that need a search index update
+2025-10-30 16:25:33,597+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.SearchIndexUpgrade_1_25 - Searching for repositories that need a search index update
+2025-10-30 16:25:33,647+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.security.apikey.upgrade.ApiKeyUpgrade_1_31 - Updating primary key for api_key. table_exists:true index:false change_required:false
+2025-10-30 16:25:33,776+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.steps.PypiAssetMigrationStep_1_35 - Removing cached assets in pypi group repositories, regenerated with proper storage path on request.
+2025-10-30 16:25:34,338+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.SoftDeletedBlobsByBlobStoreIndexMigrationStep_2_7 - Creating index idx_soft_deleted_blobs_by_source_blob_store_name_record_id
+2025-10-30 16:25:34,339+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.SoftDeletedBlobsByBlobStoreIndexMigrationStep_2_7 - Index idx_soft_deleted_blobs_by_source_blob_store_name_record_id created successfully in 0.001 seconds.
+2025-10-30 16:25:34,372+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.CoordinateMigrationStep_2_13 - Scheduling CreateComponentIndexTask to run after upgrade is completed.
+2025-10-30 16:25:34,377+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.steps.RemoveLog4JVisualizer_2_15 - Dropping capabilities entries related to log4j visualizer
+2025-10-30 16:25:34,380+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.steps.RemoveLog4JVisualizer_2_15 - Dropping the log4j-visualizer table
+2025-10-30 16:25:34,387+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.ssl.plugin.upgrades.TrustedCertificatesMigrationStep_2_17 - Scheduling TrustedCertificatesMigrationTask.
+2025-10-30 16:25:34,393+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ConanCleanupMigrationStep_2_18 - Removing outdated indexes and columns from conan_component.
+2025-10-30 16:25:34,397+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ConanCleanupMigrationStep_2_18 - Successfully completed correcting the state of the conan_component table.
+2025-10-30 16:25:34,410+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.security.internal.RealmManagerImpl - Using default configuration: RealmConfigurationData{realmNames=[NexusAuthenticatingRealm, NexusAuthorizingRealm]}
+2025-10-30 16:25:34,411+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.security.internal.RealmManagerImpl - Changing configuration: RealmConfigurationData{realmNames=[NexusAuthenticatingRealm, NexusAuthorizingRealm]}
+2025-10-30 16:25:34,419+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache NexusAuthenticatingRealm.authenticationCache will be supplemented by template nexus-default
+2025-10-30 16:25:34,426+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'NexusAuthenticatingRealm.authenticationCache' created in EhcacheManager.
+2025-10-30 16:25:34,428+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=NexusAuthenticatingRealm.authenticationCache
+2025-10-30 16:25:34,429+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=NexusAuthenticatingRealm.authenticationCache
+2025-10-30 16:25:34,431+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache NexusAuthorizingRealm.authorizationCache will be supplemented by template nexus-default
+2025-10-30 16:25:34,436+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'NexusAuthorizingRealm.authorizationCache' created in EhcacheManager.
+2025-10-30 16:25:34,441+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=NexusAuthorizingRealm.authorizationCache
+2025-10-30 16:25:34,442+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=NexusAuthorizingRealm.authorizationCache
+2025-10-30 16:25:34,458+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating apt component table
+2025-10-30 16:25:34,466+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating maven2 component table
+2025-10-30 16:25:34,477+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating raw component table
+2025-10-30 16:25:34,486+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating docker component table
+2025-10-30 16:25:34,495+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating gitlfs component table
+2025-10-30 16:25:34,503+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating rubygems component table
+2025-10-30 16:25:34,512+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating yum component table
+2025-10-30 16:25:34,520+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating cargo component table
+2025-10-30 16:25:34,528+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating cocoapods component table
+2025-10-30 16:25:34,540+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating composer component table
+2025-10-30 16:25:34,552+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating conan component table
+2025-10-30 16:25:34,561+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating conda component table
+2025-10-30 16:25:34,570+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating go component table
+2025-10-30 16:25:34,583+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating helm component table
+2025-10-30 16:25:34,594+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating huggingface component table
+2025-10-30 16:25:34,610+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating npm component table
+2025-10-30 16:25:34,618+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating nuget component table
+2025-10-30 16:25:34,630+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating p2 component table
+2025-10-30 16:25:34,642+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating pypi component table
+2025-10-30 16:25:34,658+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.upgrades.ComponentNormalizedVersionMigrationStep - validating r component table
+2025-10-30 16:25:34,756+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.repository.pypi.datastore.upgrade.PypiGenerateMissingSha256ChecksumsMigrationStep - Scheduling post-startup tasks to generate missing PyPI SHA256 checksums
+2025-10-30 16:25:34,767+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.rubygems.datastore.internal.RubygemsHashAndAttributesMigrationStep - Updating gem attributes and generating sha256 checksums for ruby
+2025-10-30 16:25:34,770+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.rubygems.datastore.internal.upgrade.RubygemsHostedMarkDirtyGemInfoMigrationStep - Scheduling post-startup task to mark rubygems hosted info files dirty
+2025-10-30 16:25:34,788+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - BrowseNodeMigrationStep_1_1 migrated to v1.1 in 7ms
+2025-10-30 16:25:34,788+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - DockerUpgrade_1_2 migrated to v1.2 in 4ms
+2025-10-30 16:25:34,789+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - JobDescriptionMigrationStep_1_3 migrated to v1.3 in 2ms
+2025-10-30 16:25:34,790+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - MavenUpgrade_1_4 migrated to v1.4 in 3ms
+2025-10-30 16:25:34,790+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - UserTokenUpgrade_1_6 migrated to v1.6 in 0ms
+2025-10-30 16:25:34,791+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - MavenUpgrade_1_7 migrated to v1.7 in 1ms
+2025-10-30 16:25:34,791+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ReplicationUpgrade_1_8 migrated to v1.8 in 0ms
+2025-10-30 16:25:34,792+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - CleanupConfigUpgrade_1_9 migrated to v1.9 in 0ms
+2025-10-30 16:25:34,793+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SearchIndexUpgrade_1_10 migrated to v1.10 in 1ms
+2025-10-30 16:25:34,793+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - DatastoreBlobReconciliationLogMigrator_1_11 migrated to v1.11 in 20ms
+2025-10-30 16:25:34,794+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - AssetMigrationStep_1_12 migrated to v1.12 in 2ms
+2025-10-30 16:25:34,794+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - AssetBlobMigrationStep_1_13 migrated to v1.13 in 4ms
+2025-10-30 16:25:34,795+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - NodeIdUpgradeStep_1_14 migrated to v1.14 in 0ms
+2025-10-30 16:25:34,795+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SearchIndexUpgrade_1_15 migrated to v1.15 in 1ms
+2025-10-30 16:25:34,796+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ComponentSearchMigrationStep_1_16 migrated to v1.16 in 0ms
+2025-10-30 16:25:34,796+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - MavenDefaultReposUpgrade_1_17 migrated to v1.17 in 8ms
+2025-10-30 16:25:34,797+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - DockerUpgrade_1_18 migrated to v1.18 in 0ms
+2025-10-30 16:25:34,797+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SoftDeletedBlobsMigrationStep_1_19 migrated to v1.19 in 2ms
+2025-10-30 16:25:34,797+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - FormatSearchViewsMigrationStep_1_20 migrated to v1.20 in 0ms
+2025-10-30 16:25:34,798+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - AssetBlobMigrationStep_1_21 migrated to v1.21 in 2ms
+2025-10-30 16:25:34,798+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ComponentSearchMigrationStep_1_22 migrated to v1.22 in 0ms
+2025-10-30 16:25:34,799+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - DeploymentIdUpgradeStep_1_23 migrated to v1.23 in 2ms
+2025-10-30 16:25:34,799+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - NodeHeartbeatUpgrade_1_24 migrated to v1.24 in 0ms
+2025-10-30 16:25:34,800+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SearchIndexUpgrade_1_25 migrated to v1.25 in 1ms
+2025-10-30 16:25:34,800+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SqlCacheMigrationStep_1_26 migrated to v1.26 in 0ms
+2025-10-30 16:25:34,801+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - CleanupCapabilityDuplicatesMigrationStep_1_27 migrated to v1.27 in 12ms
+2025-10-30 16:25:34,801+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SettingsCapabilityMigrationStep_1_28 migrated to v1.28 in 2ms
+2025-10-30 16:25:34,801+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SqlSearchMigrationStep_1_29 migrated to v1.29 in 0ms
+2025-10-30 16:25:34,802+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - DistributedAuthTicketMigrationStep_1_30 migrated to v1.30 in 1ms
+2025-10-30 16:25:34,803+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ApiKeyUpgrade_1_31 migrated to v1.31 in 6ms
+2025-10-30 16:25:34,803+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - BrowseNodeMigrationStep_1_32 migrated to v1.32 in 0ms
+2025-10-30 16:25:34,803+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - BrowseNodeMigrationStep_1_33 migrated to v1.33 in 107ms
+2025-10-30 16:25:34,804+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - BrowseNodeMigrationStep_1_34 migrated to v1.34 in 1ms
+2025-10-30 16:25:34,804+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - PypiAssetMigrationStep_1_35 migrated to v1.35 in 3ms
+2025-10-30 16:25:34,805+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - BrowseNodeMigrationStep_1_36 migrated to v1.36 in 8ms
+2025-10-30 16:25:34,805+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ConvertReplicationToDenyStep_1_37 migrated to v1.37 in 0ms
+2025-10-30 16:25:34,805+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - BrowseNodeMigrationStep_1_38 migrated to v1.38 in 10ms
+2025-10-30 16:25:34,806+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - NexusBaselineMigrationStep_2_0 migrated to v2.0 in 0ms
+2025-10-30 16:25:34,806+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SearchCapabilityStep_2_1 migrated to v2.1 in 0ms
+2025-10-30 16:25:34,807+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SecretsMigrationStep_2_2 migrated to v2.2 in 499ms
+2025-10-30 16:25:34,807+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - BrowseNodeMigrationStep_2_3 migrated to v2.3 in 0ms
+2025-10-30 16:25:34,808+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - CustomS3RegionCapabilityMigrationStep_2_4 migrated to v2.4 in 0ms
+2025-10-30 16:25:34,809+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - GoogleBlobStoreMigrationStep_2_5 migrated to v2.5 in 0ms
+2025-10-30 16:25:34,809+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - S3FailoverMigrationStep_2_6 migrated to v2.6 in 0ms
+2025-10-30 16:25:34,810+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SoftDeletedBlobsByBlobStoreIndexMigrationStep_2_7 migrated to v2.7 in 1ms
+2025-10-30 16:25:34,811+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ConanV2UpgradeStep_2_8 migrated to v2.8 in 0ms
+2025-10-30 16:25:34,811+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - MalwareRemediatorTaskMigrationStep_2_9 migrated to v2.9 in 0ms
+2025-10-30 16:25:34,812+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - MalwareRemediatorMigrationStep_2_10 migrated to v2.10 in 17ms
+2025-10-30 16:25:34,812+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - BlobstoreSecretsMigrationStep_2_11 migrated to v2.11 in 1ms
+2025-10-30 16:25:34,812+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - HuggingFaceProxyDatabaseMigrationStep_2_12 migrated to v2.12 in 0ms
+2025-10-30 16:25:34,813+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - CoordinateMigrationStep_2_13 migrated to v2.13 in 2ms
+2025-10-30 16:25:34,814+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - RemoveDistributedCooperationMigrationStep_2_14 migrated to v2.14 in 0ms
+2025-10-30 16:25:34,814+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - RemoveLog4JVisualizer_2_15 migrated to v2.15 in 3ms
+2025-10-30 16:25:34,815+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - SearchCapabilityStep_2_16 migrated to v2.16 in 0ms
+2025-10-30 16:25:34,815+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - TrustedCertificatesMigrationStep_2_17 migrated to v2.17 in 2ms
+2025-10-30 16:25:34,816+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - NodeHeartBeatMigrationStep_2_17_1 migrated to v2.17.1 in 0ms
+2025-10-30 16:25:34,816+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ConanCleanupMigrationStep_2_18 migrated to v2.18 in 4ms
+2025-10-30 16:25:34,816+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - AzureBlobStoreMetricsMigrationStep migrated to v in 1ms
+2025-10-30 16:25:34,817+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - AzureSoftDeletedBlobsMigrationStep migrated to v in 0ms
+2025-10-30 16:25:34,817+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - CargoRealmMigrationStep migrated to v in 39ms
+2025-10-30 16:25:34,818+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ComponentNormalizedVersionMigrationStep migrated to v in 224ms
+2025-10-30 16:25:34,818+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ComposerRemovePackagesUpgradeStep migrated to v in 0ms
+2025-10-30 16:25:34,819+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ConanVersionInstallDatabaseMigrationStep migrated to v in 2ms
+2025-10-30 16:25:34,819+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - CopyAssetBlobSizeMigrationStep migrated to v in 5ms
+2025-10-30 16:25:34,820+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - DistributedEventsUpgrade migrated to v in 0ms
+2025-10-30 16:25:34,820+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - FileBlobStoreMetricsMigrationStep migrated to v in 2ms
+2025-10-30 16:25:34,821+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - GoogleBlobStoreMetricsMigrationStep migrated to v in 1ms
+2025-10-30 16:25:34,821+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - HuggingFaceExternalMetadataMigrationStep migrated to v in 1ms
+2025-10-30 16:25:34,822+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - NodeHeartbeatDatabaseMigrationStep migrated to v in 10ms
+2025-10-30 16:25:34,822+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - NpmPCCSAndFirewallAuditCapabilityOutOfSyncMigrationStep migrated to v in 2ms
+2025-10-30 16:25:34,823+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - NugetV2ComponentCountCleanupMigrationStep migrated to v in 0ms
+2025-10-30 16:25:34,823+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - PypiGenerateMissingSha256ChecksumsMigrationStep migrated to v in 1ms
+2025-10-30 16:25:34,824+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ReconcileTaskMigrationStep migrated to v in 1ms
+2025-10-30 16:25:34,824+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ReplicationUseTrustStoreDatabaseMigrationStep migrated to v in 0ms
+2025-10-30 16:25:34,825+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - RubygemsHashAndAttributesMigrationStep migrated to v in 1ms
+2025-10-30 16:25:34,825+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - RubygemsHostedMarkDirtyGemInfoMigrationStep migrated to v in 1ms
+2025-10-30 16:25:34,825+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - S3BlobStoreMetricsMigrationStep migrated to v in 1ms
+2025-10-30 16:25:34,826+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - ScheduleS3CompactTasksMigrationStep migrated to v in 0ms
+2025-10-30 16:25:34,826+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - Z_002_ApiKeySecretsDatabaseMigrationStep migrated to v in 1ms
+2025-10-30 16:25:34,827+0000 WARN  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - outOfOrder mode is active. Migration of schema "PUBLIC" may not be reproducible.
+2025-10-30 16:25:34,828+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.upgrade.datastore.internal.UpgradeManagerImpl - Completed migration from v1 to v2.18
+2025-10-30 16:25:34,829+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.internal.ComponentNormalizationIntegrityChecker - validating normalized_version columns
+2025-10-30 16:25:34,955+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start SCHEMAS
+2025-10-30 16:25:34,962+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.security.internal.AdminPasswordFileManagerImpl - Writing admin user temporary password to /nexus-data/admin.password
+2025-10-30 16:25:34,997+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.security.model.SecurityConfigurationSourceImpl - Initializing default users
+2025-10-30 16:25:34,999+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.security.model.SecurityConfigurationSourceImpl - Initializing default roles
+2025-10-30 16:25:35,000+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.security.model.SecurityConfigurationSourceImpl - Initializing default privileges
+2025-10-30 16:25:35,000+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.security.model.SecurityConfigurationSourceImpl - Initializing default user/role mappings
+2025-10-30 16:25:35,011+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start EVENTS
+2025-10-30 16:25:35,011+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start SECURITY
+2025-10-30 16:25:35,012+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.security.internal.DefaultSecuritySystem - Unlimited strength JCE policy detected
+2025-10-30 16:25:35,015+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start SERVICES
+2025-10-30 16:25:35,018+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache SYSTEM_INFORMATION will be supplemented by template nexus-default
+2025-10-30 16:25:35,023+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'SYSTEM_INFORMATION' created in EhcacheManager.
+2025-10-30 16:25:35,026+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=SYSTEM_INFORMATION
+2025-10-30 16:25:35,027+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=SYSTEM_INFORMATION
+2025-10-30 16:25:35,091+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.QuartzSchedulerProvider - Quartz Scheduler v2.3.2
+2025-10-30 16:25:35,262+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start REPOSITORIES
+2025-10-30 16:25:35,268+0000 INFO  [periodic-10-thread-3]  *SYSTEM org.sonatype.nexus.internal.atlas.SystemInformationGeneratorImpl - Generating system information report
+2025-10-30 16:25:35,636+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.httpclient.HttpClientManagerImpl - Using default configuration: HttpClientConfigurationData{connection=null, proxy=null, authentication=null}
+2025-10-30 16:25:35,675+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.httpclient.internal.HttpClientFacetImpl - Remote connection status of repository maven-central set to Ready to Connect.
+2025-10-30 16:25:35,679+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache maven-central#negative-cache will be supplemented by template nexus-default
+2025-10-30 16:25:35,682+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'maven-central#negative-cache' created in EhcacheManager.
+2025-10-30 16:25:35,683+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=maven-central#negative-cache
+2025-10-30 16:25:35,684+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=maven-central#negative-cache
+2025-10-30 16:25:35,769+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.repository.nuget.datastore.internal.v2.NugetV2LocalGalleryFacet - Enabled NuGet feed cooperation for nuget-hosted
+2025-10-30 16:25:35,808+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.httpclient.internal.HttpClientFacetImpl - Remote connection status of repository nuget.org-proxy set to Ready to Connect.
+2025-10-30 16:25:35,809+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache nuget.org-proxy#negative-cache will be supplemented by template nexus-default
+2025-10-30 16:25:35,812+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget.org-proxy#negative-cache' created in EhcacheManager.
+2025-10-30 16:25:35,813+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget.org-proxy#negative-cache
+2025-10-30 16:25:35,813+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget.org-proxy#negative-cache
+2025-10-30 16:25:35,817+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.repository.nuget.datastore.internal.v2.NugetV2RemoteGalleryFacet - Enabled NuGet feed cooperation for nuget.org-proxy
+2025-10-30 16:25:35,818+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache nuget.org-proxy#odata-query-cache will be supplemented by template nexus-default
+2025-10-30 16:25:35,821+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget.org-proxy#odata-query-cache' created in EhcacheManager.
+2025-10-30 16:25:35,822+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget.org-proxy#odata-query-cache
+2025-10-30 16:25:35,823+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget.org-proxy#odata-query-cache
+2025-10-30 16:25:35,852+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.httpclient.internal.HttpClientFacetImpl - Remote connection status of repository nuget-group set to Ready to Connect.
+2025-10-30 16:25:35,853+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.repository.nuget.datastore.internal.v2.NugetV2RemoteGalleryFacet - Enabled NuGet feed cooperation for nuget-group
+2025-10-30 16:25:35,854+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache nuget-group#odata-query-cache will be supplemented by template nexus-default
+2025-10-30 16:25:35,857+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget-group#odata-query-cache' created in EhcacheManager.
+2025-10-30 16:25:35,857+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget-group#odata-query-cache
+2025-10-30 16:25:35,858+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget-group#odata-query-cache
+2025-10-30 16:25:36,162+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.cluster.metadata - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] [2e9a1e67e8a325bcd6ee9f6790ff6c769e791d56] creating index, cause [api], templates [], shards [1]/[0], mappings [component]
+2025-10-30 16:25:36,402+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.cluster.metadata - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] [73ae44bc066b6a7a33b4435641d8229b9b66495a] creating index, cause [api], templates [], shards [1]/[0], mappings [component]
+2025-10-30 16:25:36,491+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.cluster.metadata - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] [3d781e8165513bfe7db3d7eaab3991b9ebec763b] creating index, cause [api], templates [], shards [1]/[0], mappings [component]
+2025-10-30 16:25:36,598+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.cluster.metadata - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] [51196dce51055df9247e1973e443b68c84549dd9] creating index, cause [api], templates [], shards [1]/[0], mappings [component]
+2025-10-30 16:25:36,725+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.cluster.routing.allocation - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[51196dce51055df9247e1973e443b68c84549dd9][0], [51196dce51055df9247e1973e443b68c84549dd9][0]] ...]).
+2025-10-30 16:25:36,757+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.cluster.metadata - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] [b2b9b8f06274052a44b61ef3c7e887f0961d99c6] creating index, cause [api], templates [], shards [1]/[0], mappings [component]
+2025-10-30 16:25:36,800+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start CAPABILITIES
+2025-10-30 16:25:36,848+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.cluster.routing.allocation - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[b2b9b8f06274052a44b61ef3c7e887f0961d99c6][0]] ...]).
+2025-10-30 16:25:36,975+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start TASKS
+2025-10-30 16:25:37,015+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Cleanup service' [repository.cleanup] : state=WAITING
+2025-10-30 16:25:37,042+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Cleanup service' [repository.cleanup] scheduled: cron
+2025-10-30 16:25:37,049+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.elasticsearch.internal.repository.IndexStartupRebuildManager - Skipping rebuild of repository indexes
+2025-10-30 16:25:37,053+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.store.internal.AssetBlobCleanupTaskManager - Scheduling cleanup of unused maven2 blobs from nexus
+2025-10-30 16:25:37,058+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Cleanup unused maven2 blobs from nexus' [assetBlob.cleanup] : state=WAITING
+2025-10-30 16:25:37,064+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Cleanup unused maven2 blobs from nexus' [assetBlob.cleanup] scheduled: cron
+2025-10-30 16:25:37,069+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.store.internal.AssetBlobCleanupTaskManager - Scheduling cleanup of unused nuget blobs from nexus
+2025-10-30 16:25:37,074+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Cleanup unused nuget blobs from nexus' [assetBlob.cleanup] : state=WAITING
+2025-10-30 16:25:37,079+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Cleanup unused nuget blobs from nexus' [assetBlob.cleanup] scheduled: cron
+2025-10-30 16:25:37,099+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Secrets - Migrate secrets
+2025-10-30 16:25:37,103+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Secrets - Migrate secrets' [secrets.migration] : state=RUNNING
+2025-10-30 16:25:37,107+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Secrets - Migrate secrets' [secrets.migration] scheduled: now
+2025-10-30 16:25:37,115+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Task log cleanup' [tasklog.cleanup] : state=WAITING
+2025-10-30 16:25:37,118+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Task log cleanup' [tasklog.cleanup] scheduled: cron
+2025-10-30 16:25:37,129+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Malicious Risk On Disk - Auto enable Health Check for proxy repositories on startup' [malicious-risk-on-disk-auto-enable-rhc] : state=WAITING
+2025-10-30 16:25:37,134+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Malicious Risk On Disk - Auto enable Health Check for proxy repositories on startup' [malicious-risk-on-disk-auto-enable-rhc] scheduled: daily
+2025-10-30 16:25:37,136+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.risk.riskondisk.MaliciousRiskOnDiskAutoEnableRHCListener - Scheduled malicious-risk-on-disk-auto-enable-rhc task. Starting at 2025-10-30T16:26:07.128Z.
+2025-10-30 16:25:37,143+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Metric aggregation' [content.usage.aggregation] : state=WAITING
+2025-10-30 16:25:37,147+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Metric aggregation' [content.usage.aggregation] scheduled: cron
+2025-10-30 16:25:37,149+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Metric aggregation' [content.usage.aggregation] runNow
+2025-10-30 16:25:37,150+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Metric aggregation' [content.usage.aggregation] state change WAITING -> RUNNING
+2025-10-30 16:25:37,166+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.datastore.DatastoreQuartzSchedulerSPI - Scheduler put into ready mode
+2025-10-30 16:25:37,179+0000 INFO  [jetty-main-1]  *SYSTEM com.softwarementors.extjs.djn.servlet.DirectJNgineServlet - Servlet GLOBAL configuration: debug=false, providersUrl=service/extdirect, minify=false, batchRequestsMultithreadingEnabled=true, batchRequestsMinThreadsPoolSize=16, batchRequestsMaxThreadsPoolSize=80, batchRequestsMaxThreadsPerRequest=8, batchRequestsMaxThreadKeepAliveSeconds=60, gsonBuilderConfiguratorClass=org.sonatype.nexus.extdirect.internal.ExtDirectGsonBuilderConfigurator, dispatcherClass=com.softwarementors.extjs.djn.servlet.ssm.SsmDispatcher, jsonRequestProcessorThreadClass=org.sonatype.nexus.extdirect.internal.ExtDirectJsonRequestProcessorThread, contextPath=--not specified: calculated via Javascript--, createSourceFiles=true
+2025-10-30 16:25:37,182+0000 INFO  [jetty-main-1]  *SYSTEM com.softwarementors.extjs.djn.servlet.DirectJNgineServlet - Servlet GLOBAL configuration: registryConfiguratorClass=
+2025-10-30 16:25:37,212+0000 INFO  [jetty-main-1]  *SYSTEM com.softwarementors.extjs.djn.jscodegen.CodeFileGenerator - Creating source files for APIs...
+2025-10-30 16:25:37,251+0000 INFO  [quartz-14-thread-1]  *TASK org.sonatype.nexus.internal.security.secrets.task.SecretsMigrationTask - Task log: /nexus-data/log/tasks/secrets.migration-20251030162537234.log
+2025-10-30 16:25:37,269+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.httpbridge.internal.ViewServlet - Initialized
+2025-10-30 16:25:37,269+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.httpbridge.internal.ViewServlet - Initialized
+2025-10-30 16:25:37,275+0000 INFO  [quartz-14-thread-1]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Secrets - Migrate secrets' [secrets.migration] state change RUNNING -> OK
+2025-10-30 16:25:37,293+0000 INFO  [quartz-14-thread-1]  *TASK org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Secrets - Migrate secrets
+2025-10-30 16:25:37,295+0000 INFO  [quartz-14-thread-1]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Secrets - Migrate secrets' [secrets.migration] : state=RUNNING
+2025-10-30 16:25:37,299+0000 INFO  [quartz-14-thread-1]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Secrets - Migrate secrets' [secrets.migration] scheduled: now
+2025-10-30 16:25:37,315+0000 INFO  [quartz-14-thread-3]  *TASK org.sonatype.nexus.internal.security.secrets.task.SecretsMigrationTask - Task log: /nexus-data/log/tasks/secrets.migration-20251030162537310.log
+2025-10-30 16:25:37,317+0000 INFO  [quartz-14-thread-3]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Secrets - Migrate secrets' [secrets.migration] state change RUNNING -> OK
+2025-10-30 16:25:37,324+0000 INFO  [quartz-14-thread-3]  *TASK org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Repair - Recreate component indexes for performance
+2025-10-30 16:25:37,326+0000 INFO  [quartz-14-thread-3]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Repair - Recreate component indexes for performance' [create.component.index.task] : state=RUNNING
+2025-10-30 16:25:37,329+0000 INFO  [quartz-14-thread-3]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Repair - Recreate component indexes for performance' [create.component.index.task] scheduled: now
+2025-10-30 16:25:37,346+0000 INFO  [quartz-14-thread-4]  *TASK org.sonatype.nexus.repository.content.tasks.CreateComponentIndexTask - Task log: /nexus-data/log/tasks/create.component.index.task-20251030162537342.log
+2025-10-30 16:25:37,360+0000 INFO  [quartz-14-thread-4]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Repair - Recreate component indexes for performance' [create.component.index.task] state change RUNNING -> OK
+2025-10-30 16:25:37,363+0000 INFO  [quartz-14-thread-2]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Metric aggregation' [content.usage.aggregation] state change RUNNING -> WAITING (OK)
+2025-10-30 16:25:37,367+0000 INFO  [quartz-14-thread-4]  *TASK org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Migrate trusted certificates Task
+2025-10-30 16:25:37,369+0000 INFO  [quartz-14-thread-4]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Migrate trusted certificates Task' [trusted.certificates.migration] : state=RUNNING
+2025-10-30 16:25:37,372+0000 INFO  [quartz-14-thread-4]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Migrate trusted certificates Task' [trusted.certificates.migration] scheduled: now
+2025-10-30 16:25:37,388+0000 INFO  [quartz-14-thread-5]  *TASK com.sonatype.nexus.ssl.plugin.tasks.TrustedCertificateMigrationService - Starting migration.
+2025-10-30 16:25:37,389+0000 INFO  [quartz-14-thread-5]  *TASK com.sonatype.nexus.ssl.plugin.tasks.TrustedCertificateMigrationService - There are 0 trusted certificates to migrate.
+2025-10-30 16:25:37,391+0000 INFO  [quartz-14-thread-5]  *TASK com.sonatype.nexus.ssl.plugin.tasks.TrustedCertificateMigrationService - The migration has been completed successfully, it took 3 milliseconds.
+2025-10-30 16:25:37,392+0000 INFO  [quartz-14-thread-5]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Migrate trusted certificates Task' [trusted.certificates.migration] state change RUNNING -> OK
+2025-10-30 16:25:37,400+0000 INFO  [quartz-14-thread-5]  *TASK org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Repair - Normalize component versions for retain-n
+2025-10-30 16:25:37,402+0000 INFO  [quartz-14-thread-5]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Repair - Normalize component versions for retain-n' [component.normalize.version] : state=RUNNING
+2025-10-30 16:25:37,405+0000 INFO  [quartz-14-thread-5]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Repair - Normalize component versions for retain-n' [component.normalize.version] scheduled: now
+2025-10-30 16:25:37,423+0000 INFO  [quartz-14-thread-6]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - Task log: /nexus-data/log/tasks/component.normalize.version-20251030162537416.log
+2025-10-30 16:25:37,485+0000 INFO  [quartz-14-thread-6]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Repair - Normalize component versions for retain-n' [component.normalize.version] state change RUNNING -> OK
+2025-10-30 16:25:37,492+0000 INFO  [quartz-14-thread-6]  *TASK org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Upgrade - install missed Conan version repository attribute
+2025-10-30 16:25:37,494+0000 INFO  [quartz-14-thread-6]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Upgrade - install missed Conan version repository attribute' [conan.version.install.task] : state=RUNNING
+2025-10-30 16:25:37,498+0000 INFO  [quartz-14-thread-6]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Upgrade - install missed Conan version repository attribute' [conan.version.install.task] scheduled: now
+2025-10-30 16:25:37,508+0000 INFO  [quartz-14-thread-7]  *TASK com.sonatype.nexus.repository.conan.internal.upgrade.ConanVersionInstallTask - Task information:
+2025-10-30 16:25:37,511+0000 INFO  [quartz-14-thread-7]  *TASK com.sonatype.nexus.repository.conan.internal.upgrade.ConanVersionInstallTask -  ID: 26482f8c-2847-4dca-93c3-d4d4f0b4275a
+2025-10-30 16:25:37,512+0000 INFO  [quartz-14-thread-7]  *TASK com.sonatype.nexus.repository.conan.internal.upgrade.ConanVersionInstallTask -  Type: conan.version.install.task
+2025-10-30 16:25:37,513+0000 INFO  [quartz-14-thread-7]  *TASK com.sonatype.nexus.repository.conan.internal.upgrade.ConanVersionInstallTask -  Name: Upgrade - install missed Conan version repository attribute
+2025-10-30 16:25:37,513+0000 INFO  [quartz-14-thread-7]  *TASK com.sonatype.nexus.repository.conan.internal.upgrade.ConanVersionInstallTask -  Description: Upgrade - install missed Conan version repository attribute
+2025-10-30 16:25:37,514+0000 INFO  [quartz-14-thread-7]  *TASK com.sonatype.nexus.repository.conan.internal.upgrade.ConanVersionInstallTask - Task configuration: {.updated=2025-10-30T16:25:37.493Z, .name=Upgrade - install missed Conan version repository attribute, .recoverable=false, .message=Upgrade - install missed Conan version repository attribute, .id=26482f8c-2847-4dca-93c3-d4d4f0b4275a, .typeName=Upgrade - install missed Conan version repository attribute, .visible=false, .typeId=conan.version.install.task, .exposed=false, .created=2025-10-30T16:25:37.493Z}
+2025-10-30 16:25:37,515+0000 INFO  [quartz-14-thread-7]  *TASK com.sonatype.nexus.repository.conan.internal.upgrade.ConanVersionInstallTask - Task log: /nexus-data/log/tasks/conan.version.install.task-20251030162537508.log
+2025-10-30 16:25:37,518+0000 INFO  [quartz-14-thread-7]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Upgrade - install missed Conan version repository attribute' [conan.version.install.task] state change RUNNING -> OK
+2025-10-30 16:25:37,525+0000 INFO  [quartz-14-thread-7]  *TASK org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Repository - Copy Blob Size to Asset Table
+2025-10-30 16:25:37,526+0000 INFO  [quartz-14-thread-7]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Repository - Copy Blob Size to Asset Table' [repository.metrics.blob.size.copy] : state=RUNNING
+2025-10-30 16:25:37,530+0000 INFO  [quartz-14-thread-7]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Repository - Copy Blob Size to Asset Table' [repository.metrics.blob.size.copy] scheduled: now
+2025-10-30 16:25:37,547+0000 INFO  [quartz-14-thread-8]  *TASK com.sonatype.nexus.repository.content.tasks.CopyBlobSizeTask - Task log: /nexus-data/log/tasks/repository.metrics.blob.size.copy-20251030162537542.log
+2025-10-30 16:25:37,549+0000 INFO  [quartz-14-thread-8]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Repository - Copy Blob Size to Asset Table' [repository.metrics.blob.size.copy] state change RUNNING -> OK
+2025-10-30 16:25:37,559+0000 INFO  [quartz-14-thread-8]  *TASK org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Migration - Move blobstore metrics to the database
+2025-10-30 16:25:37,561+0000 INFO  [quartz-14-thread-8]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Migration - Move blobstore metrics to the database' [nexus.blobstore.metrics.migration.task] : state=RUNNING
+2025-10-30 16:25:37,564+0000 INFO  [quartz-14-thread-8]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Migration - Move blobstore metrics to the database' [nexus.blobstore.metrics.migration.task] scheduled: now
+2025-10-30 16:25:37,573+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.blobstore.internal.metrics.BlobStoreMetricsMigrationTask - processing blob store 'default'
+2025-10-30 16:25:37,587+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.blobstore.internal.metrics.BlobStoreMetricsMigrationTask - Initial db metrics for File:default are: BlobStoreMetricsEntity{id='1', blobStoreName='default', totalSize=0, blobCount=0, uploadBlobSize=0, uploadSuccessfulRequests=0, uploadTimeOnRequests=0, uploadErrorRequests=0, downloadBlobSize=0, downloadSuccessfulRequests=0, downloadTimeOnRequests=0, downloadErrorRequests=0}
+2025-10-30 16:25:37,594+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.blobstore.internal.metrics.BlobStoreMetricsMigrationTask - Metrics from filesystem to be migrated for File:default are: AccumulatingBlobStoreMetrics{blobCount=0, totalSize=0, availableSpaceByFileStore={fileStore:D:\=35649396736}, unlimited=false}
+2025-10-30 16:25:37,597+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.blobstore.internal.metrics.BlobStoreMetricsMigrationTask - Operational metrics from filesystem to be migrated for File:default and UPLOAD are: OperationMetrics{blobSize=0, successfulRequests=0, timeOnRequests=0, errorRequests=0}
+2025-10-30 16:25:37,598+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.blobstore.internal.metrics.BlobStoreMetricsMigrationTask - Operational metrics from filesystem to be migrated for File:default and DOWNLOAD are: OperationMetrics{blobSize=0, successfulRequests=0, timeOnRequests=0, errorRequests=0}
+2025-10-30 16:25:37,606+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.blobstore.internal.metrics.BlobStoreMetricsMigrationTask - Final db metrics for File:default are: BlobStoreMetricsEntity{id='1', blobStoreName='default', totalSize=0, blobCount=0, uploadBlobSize=0, uploadSuccessfulRequests=0, uploadTimeOnRequests=0, uploadErrorRequests=0, downloadBlobSize=0, downloadSuccessfulRequests=0, downloadTimeOnRequests=0, downloadErrorRequests=0}
+2025-10-30 16:25:37,607+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.blobstore.internal.metrics.BlobStoreMetricsMigrationTask - successfully processed blob store 'default'
+2025-10-30 16:25:37,607+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.blobstore.internal.metrics.BlobStoreMetricsMigrationTask - finished task 'Migration - Move blobstore metrics to the database' - processed blob stores : 1
+2025-10-30 16:25:37,609+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Migration - Move blobstore metrics to the database' [nexus.blobstore.metrics.migration.task] state change RUNNING -> OK
+2025-10-30 16:25:37,617+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Retrieve external blobstore metadata
+2025-10-30 16:25:37,618+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Retrieve external blobstore metadata' [external.blobstore.metadata] : state=RUNNING
+2025-10-30 16:25:37,622+0000 INFO  [quartz-14-thread-9]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Retrieve external blobstore metadata' [external.blobstore.metadata] scheduled: now
+2025-10-30 16:25:37,635+0000 INFO  [quartz-14-thread-10]  *TASK org.sonatype.nexus.blobstore.s3.ExternalMetadataTask - Task log: /nexus-data/log/tasks/external.blobstore.metadata-20251030162537631.log
+2025-10-30 16:25:37,639+0000 INFO  [quartz-14-thread-10]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Retrieve external blobstore metadata' [external.blobstore.metadata] state change RUNNING -> OK
+2025-10-30 16:25:37,644+0000 INFO  [quartz-14-thread-10]  *TASK org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Remove old Reconcile Tasks
+2025-10-30 16:25:37,646+0000 INFO  [quartz-14-thread-10]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Remove old Reconcile Tasks' [old.reconcile.migration] : state=RUNNING
+2025-10-30 16:25:37,647+0000 INFO  [jetty-main-1]  *SYSTEM org.jboss.resteasy.plugins.validation.i18n - RESTEASY008550: Unable to find CDI supporting ValidatorFactory. Using default ValidatorFactory
+2025-10-30 16:25:37,649+0000 INFO  [quartz-14-thread-10]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Remove old Reconcile Tasks' [old.reconcile.migration] scheduled: now
+2025-10-30 16:25:37,657+0000 INFO  [quartz-14-thread-11]  *TASK com.sonatype.nexus.reconcile.upgrade.ReconcileMigrationTask - Task information:
+2025-10-30 16:25:37,661+0000 INFO  [quartz-14-thread-11]  *TASK com.sonatype.nexus.reconcile.upgrade.ReconcileMigrationTask -  ID: 137f50b9-f7d2-45e9-9986-32f186078433
+2025-10-30 16:25:37,662+0000 INFO  [quartz-14-thread-11]  *TASK com.sonatype.nexus.reconcile.upgrade.ReconcileMigrationTask -  Type: old.reconcile.migration
+2025-10-30 16:25:37,662+0000 INFO  [quartz-14-thread-11]  *TASK com.sonatype.nexus.reconcile.upgrade.ReconcileMigrationTask -  Name: Remove old Reconcile Tasks
+2025-10-30 16:25:37,663+0000 INFO  [quartz-14-thread-11]  *TASK com.sonatype.nexus.reconcile.upgrade.ReconcileMigrationTask -  Description: null
+2025-10-30 16:25:37,664+0000 INFO  [quartz-14-thread-11]  *TASK com.sonatype.nexus.reconcile.upgrade.ReconcileMigrationTask - Task configuration: {.updated=2025-10-30T16:25:37.645Z, .name=Remove old Reconcile Tasks, .recoverable=true, .id=137f50b9-f7d2-45e9-9986-32f186078433, .typeName=Remove old Reconcile Tasks, .visible=false, .typeId=old.reconcile.migration, .exposed=false, .created=2025-10-30T16:25:37.645Z}
+2025-10-30 16:25:37,665+0000 INFO  [quartz-14-thread-11]  *TASK com.sonatype.nexus.reconcile.upgrade.ReconcileMigrationTask - Task log: /nexus-data/log/tasks/old.reconcile.migration-20251030162537657.log
+2025-10-30 16:25:37,668+0000 INFO  [quartz-14-thread-11]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Remove old Reconcile Tasks' [old.reconcile.migration] state change RUNNING -> OK
+2025-10-30 16:25:37,674+0000 INFO  [quartz-14-thread-11]  *TASK org.sonatype.nexus.scheduling.internal.upgrade.datastore.QueuingUpgradeTaskScheduler - Running failed upgrade task Upgrade - moving api keys to v2 table
+2025-10-30 16:25:37,676+0000 INFO  [quartz-14-thread-11]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Upgrade - moving api keys to v2 table' [nexus.apikey.secrets] : state=RUNNING
+2025-10-30 16:25:37,679+0000 INFO  [quartz-14-thread-11]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Upgrade - moving api keys to v2 table' [nexus.apikey.secrets] scheduled: now
+2025-10-30 16:25:37,689+0000 INFO  [quartz-14-thread-12]  *TASK org.sonatype.nexus.internal.security.apikey.upgrade.ApiKeyToSecretsTask - Task information:
+2025-10-30 16:25:37,694+0000 INFO  [quartz-14-thread-12]  *TASK org.sonatype.nexus.internal.security.apikey.upgrade.ApiKeyToSecretsTask -  ID: 42d1ab73-0640-4817-b74f-038fc9955a00
+2025-10-30 16:25:37,695+0000 INFO  [quartz-14-thread-12]  *TASK org.sonatype.nexus.internal.security.apikey.upgrade.ApiKeyToSecretsTask -  Type: nexus.apikey.secrets
+2025-10-30 16:25:37,696+0000 INFO  [quartz-14-thread-12]  *TASK org.sonatype.nexus.internal.security.apikey.upgrade.ApiKeyToSecretsTask -  Name: Upgrade - moving api keys to v2 table
+2025-10-30 16:25:37,696+0000 INFO  [quartz-14-thread-12]  *TASK org.sonatype.nexus.internal.security.apikey.upgrade.ApiKeyToSecretsTask -  Description: Upgrade - moving api keys to v2 table
+2025-10-30 16:25:37,697+0000 INFO  [quartz-14-thread-12]  *TASK org.sonatype.nexus.internal.security.apikey.upgrade.ApiKeyToSecretsTask - Task configuration: {.updated=2025-10-30T16:25:37.675Z, .name=Upgrade - moving api keys to v2 table, .recoverable=false, .message=Upgrade - moving api keys to v2 table, .id=42d1ab73-0640-4817-b74f-038fc9955a00, .typeName=Upgrade - moving api keys to v2 table, .visible=true, .typeId=nexus.apikey.secrets, .exposed=false, .created=2025-10-30T16:25:37.675Z}
+2025-10-30 16:25:37,699+0000 INFO  [quartz-14-thread-12]  *TASK org.sonatype.nexus.internal.security.apikey.upgrade.ApiKeyToSecretsTask - Task log: /nexus-data/log/tasks/nexus.apikey.secrets-20251030162537689.log
+2025-10-30 16:25:38,071+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.siesta.SiestaServlet - JAX-RS RuntimeDelegate: org.jboss.resteasy.spi.ResteasyProviderFactory@5f5aca13
+2025-10-30 16:25:38,072+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.siesta.SiestaServlet - Initialized
+2025-10-30 16:25:38,073+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.server.handler.ContextHandler - Started oeje8n.ContextHandler$CoreContextHandler@30a733de{Sonatype Nexus,/,b=null,a=AVAILABLE,h=oeje8n.ContextHandler$CoreContextHandler$CoreToNestedHandler@4fedfb85{STARTED}}
+2025-10-30 16:25:38,117+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.jmx.MetaData - Getter/setter type mismatch for mbean attribute formEncodedMethods in class org.eclipse.jetty.server.HttpConfiguration, attribute will be read-only
+2025-10-30 16:25:38,149+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@12cd4761{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+2025-10-30 16:25:38,152+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.server.Server - Started oejs.Server@250f9799{STARTING}[12.0.17,sto=5000] @36124ms
+2025-10-30 16:25:38,153+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - 
+-------------------------------------------------
+
+Started Sonatype Nexus COMMUNITY 3.85.0-03
+
+-------------------------------------------------
+2025-10-30 16:25:38,913+0000 INFO  [main]  *SYSTEM com.sonatype.nexus.bootstrap.entrypoint.pro.SonatypeNexusRepositoryApplication - Started SonatypeNexusRepositoryApplication in 35.55 seconds (process running for 36.885)
+2025-10-30 16:25:47,780+0000 INFO  [quartz-14-thread-12]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Upgrade - moving api keys to v2 table' [nexus.apikey.secrets] state change RUNNING -> OK
+2025-10-30 16:26:07,134+0000 INFO  [quartz-14-thread-13]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Malicious Risk On Disk - Auto enable Health Check for proxy repositories on startup' [malicious-risk-on-disk-auto-enable-rhc] state change WAITING -> RUNNING
+2025-10-30 16:26:07,138+0000 INFO  [quartz-14-thread-13]  *TASK com.sonatype.nexus.risk.riskondisk.MaliciousRiskOnDiskAutoEnableRHCTask - Starting malicious-risk-on-disk-auto-enable-rhc task
+2025-10-30 16:26:07,140+0000 INFO  [quartz-14-thread-13]  *TASK com.sonatype.nexus.risk.riskondisk.MaliciousRiskOnDiskAutoEnableRHCTask - Found 2 proxy repositories
+2025-10-30 16:26:08,225+0000 INFO  [quartz-14-thread-13]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: maven-central' [healthcheck] : state=WAITING
+2025-10-30 16:26:08,228+0000 INFO  [quartz-14-thread-13]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'System - Repository Health Check: maven-central' [healthcheck] scheduled: hourly
+2025-10-30 16:26:08,232+0000 INFO  [quartz-14-thread-13]  *TASK com.sonatype.nexus.plugins.healthcheck.service.impl.HealthCheckTaskManagerImpl - Enabled health check for repository maven-central
+2025-10-30 16:26:08,239+0000 INFO  [quartz-14-thread-13]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] : state=WAITING
+2025-10-30 16:26:08,243+0000 INFO  [quartz-14-thread-13]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] scheduled: hourly
+2025-10-30 16:26:08,246+0000 INFO  [quartz-14-thread-13]  *TASK com.sonatype.nexus.plugins.healthcheck.service.impl.HealthCheckTaskManagerImpl - Enabled health check for repository nuget.org-proxy
+2025-10-30 16:26:08,248+0000 INFO  [quartz-14-thread-13]  *TASK com.sonatype.nexus.risk.riskondisk.MaliciousRiskOnDiskAutoEnableRHCTask - Completed malicious-risk-on-disk-auto-enable-rhc task
+2025-10-30 16:26:08,251+0000 INFO  [quartz-14-thread-13]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Malicious Risk On Disk - Auto enable Health Check for proxy repositories on startup' [malicious-risk-on-disk-auto-enable-rhc] state change RUNNING -> WAITING (OK)
+2025-10-30 16:26:13,239+0000 INFO  [quartz-14-thread-14]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: maven-central' [healthcheck] state change WAITING -> RUNNING
+2025-10-30 16:26:13,265+0000 INFO  [quartz-14-thread-15]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] state change WAITING -> RUNNING
+2025-10-30 16:26:14,322+0000 INFO  [quartz-14-thread-14]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'System - Repository Health Check: maven-central' [healthcheck] scheduled: hourly
+2025-10-30 16:26:14,326+0000 INFO  [quartz-14-thread-14]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: maven-central' [healthcheck] state change RUNNING -> WAITING (OK)
+2025-10-30 16:26:15,882+0000 INFO  [quartz-14-thread-15]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] scheduled: hourly
+2025-10-30 16:26:15,885+0000 INFO  [quartz-14-thread-15]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] state change RUNNING -> WAITING (OK)
+2025-10-30 16:26:24,314+0000 INFO  [quartz-14-thread-16]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: maven-central' [healthcheck] state change WAITING -> RUNNING
+2025-10-30 16:26:25,875+0000 INFO  [quartz-14-thread-17]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] state change WAITING -> RUNNING
+2025-10-30 16:26:27,046+0000 INFO  [quartz-14-thread-16]  *TASK com.sonatype.nexus.plugins.healthcheck.task.HealthCheckTask - Received health check report for repository maven-central
+2025-10-30 16:26:27,052+0000 INFO  [quartz-14-thread-16]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'System - Repository Health Check: maven-central' [healthcheck] scheduled: hourly
+2025-10-30 16:26:27,060+0000 INFO  [quartz-14-thread-16]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: maven-central' [healthcheck] state change RUNNING -> WAITING (OK)
+2025-10-30 16:26:29,833+0000 INFO  [quartz-14-thread-17]  *TASK com.sonatype.nexus.plugins.healthcheck.task.HealthCheckTask - Received health check report for repository nuget.org-proxy
+2025-10-30 16:26:29,838+0000 INFO  [quartz-14-thread-17]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] scheduled: hourly
+2025-10-30 16:26:29,841+0000 INFO  [quartz-14-thread-17]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] state change RUNNING -> WAITING (OK)
+2025-10-30 16:28:29,567+0000 INFO  [JettyShutdownThread]  *SYSTEM org.eclipse.jetty.server.Server - Stopped oejs.Server@250f9799{STOPPING}[12.0.17,sto=5000]
+2025-10-30 16:28:29,568+0000 INFO  [JettyShutdownThread]  *SYSTEM org.eclipse.jetty.server.Server - Shutdown oejs.Server@250f9799{STOPPING}[12.0.17,sto=5000]
+2025-10-30 16:28:29,579+0000 INFO  [JettyShutdownThread]  *SYSTEM org.eclipse.jetty.server.AbstractConnector - Stopped ServerConnector@12cd4761{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+2025-10-30 16:28:29,582+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.repository.httpbridge.internal.ViewServlet - Destroyed
+2025-10-30 16:28:29,583+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.repository.httpbridge.internal.ViewServlet - Destroyed
+2025-10-30 16:28:29,583+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.siesta.SiestaServlet - Destroyed
+2025-10-30 16:28:29,587+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.internal.NexusServletContextListener - Uptime: 3 minutes 27 seconds (com.sonatype.nexus.bootstrap.entrypoint.edition.community.CommunityNexusEdition@7730ef88)
+2025-10-30 16:28:29,587+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Shutting down
+2025-10-30 16:28:29,617+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Indexing lifecycle managed components up to phase TASKS
+2025-10-30 16:28:29,618+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop TASKS
+2025-10-30 16:28:29,625+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.quartz.internal.datastore.DatastoreQuartzSchedulerSPI - Scheduler put into stand-by mode
+2025-10-30 16:28:29,628+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop CAPABILITIES
+2025-10-30 16:28:29,629+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop REPOSITORIES
+2025-10-30 16:28:29,651+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop SERVICES
+2025-10-30 16:28:29,665+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'SYSTEM_INFORMATION' removed from EhcacheManager.
+2025-10-30 16:28:29,668+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'SYSTEM_INFORMATION' successfully destroyed in EhcacheManager.
+2025-10-30 16:28:29,670+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop SECURITY
+2025-10-30 16:28:29,672+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop EVENTS
+2025-10-30 16:28:29,672+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop SCHEMAS
+2025-10-30 16:28:29,673+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop UPGRADE
+2025-10-30 16:28:29,674+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop RESTORE
+2025-10-30 16:28:29,675+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop STORAGE
+2025-10-30 16:28:29,692+0000 INFO  [JettyShutdownThread]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] stopping ...
+2025-10-30 16:28:29,849+0000 INFO  [JettyShutdownThread]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] stopped
+2025-10-30 16:28:29,850+0000 INFO  [JettyShutdownThread]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] closing ...
+2025-10-30 16:28:29,856+0000 INFO  [JettyShutdownThread]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] closed
+2025-10-30 16:28:29,864+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget-group#odata-query-cache' removed from EhcacheManager.
+2025-10-30 16:28:29,866+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'MALICIOUS_RISK_ON_DISK_CACHE' removed from EhcacheManager.
+2025-10-30 16:28:29,867+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'NexusAuthenticatingRealm.authenticationCache' removed from EhcacheManager.
+2025-10-30 16:28:29,868+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'NexusAuthorizingRealm.authorizationCache' removed from EhcacheManager.
+2025-10-30 16:28:29,869+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'ENABLED_REGISTRIES' removed from EhcacheManager.
+2025-10-30 16:28:29,870+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'maven-central#negative-cache' removed from EhcacheManager.
+2025-10-30 16:28:29,877+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget.org-proxy#odata-query-cache' removed from EhcacheManager.
+2025-10-30 16:28:29,882+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget.org-proxy#negative-cache' removed from EhcacheManager.
+2025-10-30 16:28:30,165+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.cache.internal.ehcache.EhCacheManagerProvider - Cache-manager closed
+2025-10-30 16:28:30,167+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - Shutting down H2 database
+2025-10-30 16:28:30,352+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - Executed H2 SHUTDOWN command
+2025-10-30 16:28:30,378+0000 INFO  [JettyShutdownThread]  *SYSTEM com.zaxxer.hikari.HikariDataSource - nexus - Shutdown initiated...
+2025-10-30 16:28:30,393+0000 INFO  [JettyShutdownThread]  *SYSTEM com.zaxxer.hikari.HikariDataSource - nexus - Shutdown completed.
+2025-10-30 16:28:30,394+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop KERNEL
+2025-10-30 16:29:20,020+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.configuration.NexusProperties - nexus.properties: {ssl.etc=/opt/sonatype/nexus/etc/ssl, nexus-edition=nexus-oss-edition, java.specification.version=17, nexus-db-feature=nexus-datastore-mybatis, sun.jnu.encoding=UTF-8, java.class.path=/opt/sonatype/nexus/bin/sonatype-nexus-repository-3.85.0-03.jar:/opt/sonatype/nexus/../sonatype-work/nexus3/etc, karaf.etc=/opt/sonatype/nexus/etc/karaf, java.vm.vendor=Red Hat, Inc., sun.arch.data.model=64, java.vendor.url=https://www.redhat.com/, nexus.session.enabled=true, user.timezone=GMT, org.jboss.logging.provider=slf4j, application-port=8081, java.vm.specification.version=17, os.name=Linux, nexus.scripts.allowCreation=false, sun.java.launcher=SUN_STANDARD, user.country=US, karaf.data=/nexus-data, sun.boot.library.path=/usr/lib/jvm/java-17-openjdk-17.0.16.0.8-2.el9.x86_64/lib, sun.java.command=org.springframework.boot.loader.launch.PropertiesLauncher, logging.register-shutdown-hook=false, nexus.zero.downtime.enabled=false, jdk.debug=release, karaf.instances=/opt/sonatype/nexus/instances, sun.cpu.endian=little, user.home=/opt/sonatype/nexus, user.language=en, java.specification.vendor=Oracle Corporation, java.version.date=2025-07-15, java.home=/usr/lib/jvm/java-17-openjdk-17.0.16.0.8-2.el9.x86_64, logging.config=etc/logback/logback.xml, nexus-features=nexus-core-feature, file.separator=/, java.vm.compressedOopsMode=Zero based, line.separator=
+, nexus.onboarding.enabled=true, java.vm.specification.vendor=Oracle Corporation, java.specification.name=Java Platform API Specification, jetty.etc=/opt/sonatype/nexus/etc/jetty, FILE_LOG_CHARSET=UTF-8, java.awt.headless=true, spring.config.location=etc/default-application.properties, application-host=0.0.0.0, nexus-context-path=/, java.util.logging.config.file=/opt/sonatype/nexus/etc/java.util.logging.properties, java.protocol.handler.pkgs=org.springframework.boot.loader.net.protocol, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, karaf.home=/opt/sonatype/nexus, nexus.http.denyframe.enabled=true, java.runtime.version=17.0.16+8-LTS, user.name=nexus, path.separator=:, nexus.jwt.enabled=false, os.version=5.15.167.4-microsoft-standard-WSL2, java.runtime.name=OpenJDK Runtime Environment, nexus-args=/opt/sonatype/nexus/etc/jetty/jetty.xml,/opt/sonatype/nexus/etc/jetty/jetty-http.xml,/opt/sonatype/nexus/etc/jetty/jetty-requestlog.xml, nexus.quartz.jobstore.jdbc=true, file.encoding=UTF-8, java.vm.name=OpenJDK 64-Bit Server VM, java.vendor.version=(Red_Hat-17.0.16.0.8-1), java.util.prefs.userRoot=/nexus-data/javaprefs, java.vendor.url.bug=https://access.redhat.com/support/cases/, java.io.tmpdir=/opt/sonatype/nexus/../sonatype-work/nexus3/tmp, logback.etc=/opt/sonatype/nexus/etc/logback, nexus.security.oauth2.enabled=false, java.version=17.0.16, user.dir=/opt/sonatype/nexus, os.arch=amd64, fabric.etc=/opt/sonatype/nexus/etc/fabric, java.vm.specification.name=Java Virtual Machine Specification, PID=1, nexus.change.repo.blobstore.task.enabled=true, CONSOLE_LOG_CHARSET=UTF-8, native.encoding=UTF-8, java.library.path=/opt/sonatype/nexus/lib:/opt/sonatype/nexus/lib:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib, java.vm.info=mixed mode, sharing, java.vendor=Red Hat, Inc., java.vm.version=17.0.16+8-LTS, java.specification.maintenance.version=1, karaf.base=/opt/sonatype/nexus, sun.io.unicode.encoding=UnicodeLittle, karaf.log=/opt/sonatype/nexus/../sonatype-work/nexus3/log, java.class.version=61.0}
+2025-10-30 16:29:20,031+0000 INFO  [main]  *SYSTEM com.sonatype.nexus.bootstrap.entrypoint.pro.SonatypeNexusRepositoryApplication - Starting SonatypeNexusRepositoryApplication v3.85.0-03 using Java 17.0.16 with PID 1 (/opt/sonatype/nexus/bin/sonatype-nexus-repository-3.85.0-03.jar started by nexus in /opt/sonatype/nexus)
+2025-10-30 16:29:20,032+0000 INFO  [main]  *SYSTEM com.sonatype.nexus.bootstrap.entrypoint.pro.SonatypeNexusRepositoryApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-30 16:29:23,697+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.ApplicationLauncher - Starting nexus with edition COMMUNITY
+2025-10-30 16:29:24,253+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.SpringComponentScan - Scanning for components in packages: [org.sonatype.nexus, com.sonatype.nexus]
+2025-10-30 16:29:45,382+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.quartz.internal.QuartzSchedulerProvider - Thread-pool size: 20, Thread-pool priority: 5
+2025-10-30 16:29:45,426+0000 INFO  [main]  *SYSTEM org.apache.shiro.nexus.NexusWebSessionManager - Global session timeout: 1800000 ms
+2025-10-30 16:29:45,428+0000 INFO  [main]  *SYSTEM org.apache.shiro.nexus.NexusWebSessionManager - Session-cookie prototype: name=NXSESSIONID, secure=true
+2025-10-30 16:29:46,620+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.log.overrides.file.LogbackLoggerOverrides - File: /nexus-data/etc/logback/logback-overrides.xml
+2025-10-30 16:29:46,884+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.webresources.WebResourceServlet - Max-age: 30 days (2592000 seconds)
+2025-10-30 16:29:46,894+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.wonderland.DownloadServiceImpl - Downloads directory: /nexus-data/downloads
+2025-10-30 16:29:48,212+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.atlas.SupportZipGeneratorImpl - Maximum included file size: 30 megabytes
+2025-10-30 16:29:48,213+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.atlas.SupportZipGeneratorImpl - Maximum ZIP file size: 50 megabytes
+2025-10-30 16:29:48,572+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle - UI plugin descriptors:
+2025-10-30 16:29:48,573+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-rapture
+2025-10-30 16:29:48,573+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-coreui-plugin
+2025-10-30 16:29:48,574+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle - ExtJS UI plugin descriptors:
+2025-10-30 16:29:48,574+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-rapture
+2025-10-30 16:29:48,575+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-rutauth-plugin
+2025-10-30 16:29:48,576+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-proximanova-plugin
+2025-10-30 16:29:48,576+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-coreui-plugin
+2025-10-30 16:29:48,577+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-cargo
+2025-10-30 16:29:48,577+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-composer
+2025-10-30 16:29:48,578+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-onboarding-plugin
+2025-10-30 16:29:48,579+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-maven
+2025-10-30 16:29:48,579+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-docker
+2025-10-30 16:29:48,580+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-rubygems
+2025-10-30 16:29:48,580+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-npm
+2025-10-30 16:29:48,581+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-nuget
+2025-10-30 16:29:48,581+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-repository-pypi
+2025-10-30 16:29:48,582+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.rapture.internal.RaptureWebResourceBundle -   nexus-analytics-plugin
+2025-10-30 16:29:49,019+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.script.ScriptEngineManagerProvider - Detected 1 engine-factories
+2025-10-30 16:29:49,023+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.script.ScriptEngineManagerProvider - Engine-factory: Groovy Scripting Engine v2.0; language=Groovy, version=3.0.19, names=[groovy, Groovy], mime-types=[application/x-groovy], extensions=[groovy]
+2025-10-30 16:29:49,023+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.internal.script.ScriptEngineManagerProvider - Default language: groovy
+2025-10-30 16:29:49,672+0000 INFO  [main]  *SYSTEM org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.0.Final
+2025-10-30 16:29:51,642+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.cache.internal.ehcache.EhCacheManagerProvider - Creating cache-manager with configuration: file:/opt/sonatype/nexus/etc/fabric/ehcache.xml
+2025-10-30 16:29:52,950+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache MALICIOUS_RISK_ON_DISK_CACHE will be supplemented by template nexus-default
+2025-10-30 16:29:53,139+0000 INFO  [main]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'MALICIOUS_RISK_ON_DISK_CACHE' created in EhcacheManager.
+2025-10-30 16:29:53,177+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=MALICIOUS_RISK_ON_DISK_CACHE
+2025-10-30 16:29:53,179+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=MALICIOUS_RISK_ON_DISK_CACHE
+2025-10-30 16:29:53,184+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache ENABLED_REGISTRIES will be supplemented by template nexus-default
+2025-10-30 16:29:53,187+0000 INFO  [main]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'ENABLED_REGISTRIES' created in EhcacheManager.
+2025-10-30 16:29:53,188+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=ENABLED_REGISTRIES
+2025-10-30 16:29:53,189+0000 INFO  [main]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=ENABLED_REGISTRIES
+2025-10-30 16:29:53,634+0000 INFO  [main]  *SYSTEM org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - Inconsistent constructor declaration on bean with name 'maliciousRiskOnDiskAnalytics': single autowire-marked constructor flagged as optional - this constructor is effectively required since there is no default constructor to fall back to: public com.sonatype.analytics.internal.MaliciousRiskOnDiskAnalytics(com.sonatype.nexus.risk.visualizer.MaliciousRiskService,java.lang.Boolean)
+2025-10-30 16:29:54,169+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - Starting jetty
+2025-10-30 16:29:54,210+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - Applying configuration: file:/opt/sonatype/nexus/etc/jetty/jetty.xml
+2025-10-30 16:29:55,254+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - Applying configuration: file:/opt/sonatype/nexus/etc/jetty/jetty-http.xml
+2025-10-30 16:29:55,333+0000 INFO  [main]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - Applying configuration: file:/opt/sonatype/nexus/etc/jetty/jetty-requestlog.xml
+2025-10-30 16:29:55,452+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - Starting: oejs.Server@5811a538{STOPPED}[12.0.17,sto=5000]
+2025-10-30 16:29:55,468+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.server.Server - jetty-12.0.17; built: 2025-03-03T13:15:05.903Z; git: 14d19c268e4cb09afc312b5255a4cbb7a95c5cb6; jvm 17.0.16+8-LTS
+2025-10-30 16:29:56,070+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.session.DefaultSessionIdManager - Session workerName=node0
+2025-10-30 16:29:56,126+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.internal.NexusServletContextListener - Running lifecycle phases [KERNEL, STORAGE, RESTORE, UPGRADE, SCHEMAS, EVENTS, SECURITY, SERVICES, REPOSITORIES, CAPABILITIES, TASKS]
+2025-10-30 16:29:56,258+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Indexing lifecycle managed components up to phase TASKS
+2025-10-30 16:29:56,259+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start KERNEL
+2025-10-30 16:29:56,264+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.log.LogbackLogManager - Configuring
+2025-10-30 16:29:56,273+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start STORAGE
+2025-10-30 16:29:56,304+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.self.hosted.datastore.DataStoreConfigurationFileSource - Loaded 'nexus' data store configuration from properties file (h2)
+2025-10-30 16:29:56,379+0000 INFO  [jetty-main-1]  *SYSTEM com.zaxxer.hikari.HikariDataSource - nexus - Starting...
+2025-10-30 16:29:57,665+0000 INFO  [jetty-main-1]  *SYSTEM com.zaxxer.hikari.HikariDataSource - nexus - Start completed.
+2025-10-30 16:29:57,668+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Loading MyBatis configuration from /opt/sonatype/nexus/etc/fabric/mybatis.xml
+2025-10-30 16:29:57,893+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - MyBatis databaseId: H2
+2025-10-30 16:29:58,327+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DeploymentIdDAO
+2025-10-30 16:29:58,452+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NodeIdDAO
+2025-10-30 16:29:58,530+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AnonymousConfigurationDAO
+2025-10-30 16:29:58,577+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CPrivilegeDAO
+2025-10-30 16:29:58,597+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CRoleDAO
+2025-10-30 16:29:58,625+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CUserRoleMappingDAO
+2025-10-30 16:29:58,640+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CUserDAO
+2025-10-30 16:29:58,655+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RealmConfigurationDAO
+2025-10-30 16:29:58,672+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for SecretsDAO
+2025-10-30 16:29:58,692+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for SoftDeletedBlobsDAO
+2025-10-30 16:29:58,712+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CleanupPolicyDAO
+2025-10-30 16:29:58,736+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CapabilityStorageItemDAO
+2025-10-30 16:29:58,751+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for EmailConfigurationDAO
+2025-10-30 16:29:58,770+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HttpClientConfigurationDAO
+2025-10-30 16:29:58,787+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ApiKeyDAO
+2025-10-30 16:29:58,804+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ApiKeyV2DAO
+2025-10-30 16:29:58,823+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for SelectorConfigurationDAO
+2025-10-30 16:29:58,841+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NexusKeyValueDAO
+2025-10-30 16:29:58,860+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for QuartzDAO
+2025-10-30 16:29:58,887+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConfigurationDAO
+2025-10-30 16:29:58,910+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for BlobStoreConfigurationDAO
+2025-10-30 16:29:58,928+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RoutingRuleDAO
+2025-10-30 16:29:58,943+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for BlobStoreMetricsDAO
+2025-10-30 16:29:58,958+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for UpgradeTaskDAO
+2025-10-30 16:29:58,973+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ScriptDAO
+2025-10-30 16:29:58,990+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for LdapConfigurationDAO
+2025-10-30 16:29:59,005+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for KeyStoreDAO
+2025-10-30 16:29:59,020+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for TrustedSSLCertificateDAO
+2025-10-30 16:29:59,039+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComponentApplicationScanScheduleDAO
+2025-10-30 16:29:59,057+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComponentApplicationScanDAO
+2025-10-30 16:29:59,075+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ReconcilePlanDetailsDAO
+2025-10-30 16:29:59,093+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ReconcilePlanDAO
+2025-10-30 16:29:59,108+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for FirewallIgnorePatternsDAO
+2025-10-30 16:29:59,124+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RepositoryHealthCheckConfigurationDAO
+2025-10-30 16:29:59,140+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for MalwareRemediatorTaskDAO
+2025-10-30 16:29:59,155+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RepositoryMetricsDAO
+2025-10-30 16:29:59,177+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NodeHeartbeatDAO
+2025-10-30 16:29:59,194+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AggregatedMetricsDAO
+2025-10-30 16:29:59,213+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for MetricDAO
+2025-10-30 16:29:59,248+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptContentRepositoryDAO
+2025-10-30 16:29:59,305+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptComponentDAO
+2025-10-30 16:29:59,371+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptAssetBlobDAO
+2025-10-30 16:29:59,403+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptAssetDAO
+2025-10-30 16:29:59,428+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptBrowseNodeDAO
+2025-10-30 16:29:59,450+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for AptKeyValueDAO
+2025-10-30 16:29:59,467+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for Maven2ContentRepositoryDAO
+2025-10-30 16:29:59,493+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for Maven2ComponentDAO
+2025-10-30 16:29:59,512+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for Maven2AssetBlobDAO
+2025-10-30 16:29:59,538+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for Maven2AssetDAO
+2025-10-30 16:29:59,556+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for Maven2BrowseNodeDAO
+2025-10-30 16:29:59,573+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RawContentRepositoryDAO
+2025-10-30 16:29:59,599+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RawComponentDAO
+2025-10-30 16:29:59,618+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RawAssetBlobDAO
+2025-10-30 16:29:59,643+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RawAssetDAO
+2025-10-30 16:29:59,662+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RawBrowseNodeDAO
+2025-10-30 16:29:59,680+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CargoContentRepositoryDAO
+2025-10-30 16:29:59,708+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CargoComponentDAO
+2025-10-30 16:29:59,731+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CargoAssetBlobDAO
+2025-10-30 16:29:59,758+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CargoAssetDAO
+2025-10-30 16:29:59,778+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CargoBrowseNodeDAO
+2025-10-30 16:29:59,794+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CocoapodsContentRepositoryDAO
+2025-10-30 16:29:59,817+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CocoapodsComponentDAO
+2025-10-30 16:29:59,837+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CocoapodsAssetBlobDAO
+2025-10-30 16:29:59,862+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CocoapodsAssetDAO
+2025-10-30 16:29:59,882+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CocoapodsBrowseNodeDAO
+2025-10-30 16:29:59,903+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComposerContentRepositoryDAO
+2025-10-30 16:29:59,933+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComposerComponentDAO
+2025-10-30 16:29:59,954+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComposerAssetBlobDAO
+2025-10-30 16:29:59,982+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComposerAssetDAO
+2025-10-30 16:30:00,003+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ComposerBrowseNodeDAO
+2025-10-30 16:30:00,020+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConanContentRepositoryDAO
+2025-10-30 16:30:00,042+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConanComponentDAO
+2025-10-30 16:30:00,062+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConanAssetBlobDAO
+2025-10-30 16:30:00,085+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConanAssetDAO
+2025-10-30 16:30:00,102+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for ConanBrowseNodeDAO
+2025-10-30 16:30:00,119+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CondaContentRepositoryDAO
+2025-10-30 16:30:00,141+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CondaComponentDAO
+2025-10-30 16:30:00,161+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CondaAssetBlobDAO
+2025-10-30 16:30:00,184+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CondaAssetDAO
+2025-10-30 16:30:00,201+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for CondaBrowseNodeDAO
+2025-10-30 16:30:00,215+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerContentRepositoryDAO
+2025-10-30 16:30:00,234+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerComponentDAO
+2025-10-30 16:30:00,250+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerAssetBlobDAO
+2025-10-30 16:30:00,271+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerAssetDAO
+2025-10-30 16:30:00,286+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerBrowseNodeDAO
+2025-10-30 16:30:00,298+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for DockerForeignLayersDAO
+2025-10-30 16:30:00,310+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GitLfsContentRepositoryDAO
+2025-10-30 16:30:00,331+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GitLfsComponentDAO
+2025-10-30 16:30:00,350+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GitLfsAssetBlobDAO
+2025-10-30 16:30:00,373+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GitLfsAssetDAO
+2025-10-30 16:30:00,390+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GitLfsBrowseNodeDAO
+2025-10-30 16:30:00,405+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GoContentRepositoryDAO
+2025-10-30 16:30:00,427+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GoComponentDAO
+2025-10-30 16:30:00,446+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GoAssetBlobDAO
+2025-10-30 16:30:00,468+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GoAssetDAO
+2025-10-30 16:30:00,485+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for GoBrowseNodeDAO
+2025-10-30 16:30:00,501+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmContentRepositoryDAO
+2025-10-30 16:30:00,522+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmComponentDAO
+2025-10-30 16:30:00,543+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmAssetBlobDAO
+2025-10-30 16:30:00,565+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmAssetDAO
+2025-10-30 16:30:00,582+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmBrowseNodeDAO
+2025-10-30 16:30:00,598+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HelmKeyValueDAO
+2025-10-30 16:30:00,615+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HuggingFaceContentRepositoryDAO
+2025-10-30 16:30:00,639+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HuggingFaceComponentDAO
+2025-10-30 16:30:00,658+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HuggingFaceAssetBlobDAO
+2025-10-30 16:30:00,681+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HuggingFaceAssetDAO
+2025-10-30 16:30:00,699+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for HuggingFaceBrowseNodeDAO
+2025-10-30 16:30:00,714+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NpmContentRepositoryDAO
+2025-10-30 16:30:00,734+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NpmComponentDAO
+2025-10-30 16:30:00,751+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NpmAssetBlobDAO
+2025-10-30 16:30:00,771+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NpmAssetDAO
+2025-10-30 16:30:00,787+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NpmBrowseNodeDAO
+2025-10-30 16:30:00,801+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NugetContentRepositoryDAO
+2025-10-30 16:30:00,820+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NugetComponentDAO
+2025-10-30 16:30:00,837+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NugetAssetBlobDAO
+2025-10-30 16:30:00,862+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NugetAssetDAO
+2025-10-30 16:30:00,880+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for NugetBrowseNodeDAO
+2025-10-30 16:30:00,895+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for P2ContentRepositoryDAO
+2025-10-30 16:30:00,919+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for P2ComponentDAO
+2025-10-30 16:30:00,940+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for P2AssetBlobDAO
+2025-10-30 16:30:00,961+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for P2AssetDAO
+2025-10-30 16:30:00,978+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for P2BrowseNodeDAO
+2025-10-30 16:30:00,993+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for PypiContentRepositoryDAO
+2025-10-30 16:30:01,015+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for PypiComponentDAO
+2025-10-30 16:30:01,046+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for PypiAssetBlobDAO
+2025-10-30 16:30:01,080+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for PypiAssetDAO
+2025-10-30 16:30:01,098+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for PypiBrowseNodeDAO
+2025-10-30 16:30:01,115+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RContentRepositoryDAO
+2025-10-30 16:30:01,139+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RComponentDAO
+2025-10-30 16:30:01,157+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RAssetBlobDAO
+2025-10-30 16:30:01,180+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RAssetDAO
+2025-10-30 16:30:01,197+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RBrowseNodeDAO
+2025-10-30 16:30:01,211+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RubygemsContentRepositoryDAO
+2025-10-30 16:30:01,228+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RubygemsComponentDAO
+2025-10-30 16:30:01,245+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RubygemsAssetBlobDAO
+2025-10-30 16:30:01,266+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RubygemsAssetDAO
+2025-10-30 16:30:01,285+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for RubygemsBrowseNodeDAO
+2025-10-30 16:30:01,300+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumContentRepositoryDAO
+2025-10-30 16:30:01,325+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumComponentDAO
+2025-10-30 16:30:01,342+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumAssetBlobDAO
+2025-10-30 16:30:01,363+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumAssetDAO
+2025-10-30 16:30:01,370+0000 WARN  [periodic-5-thread-1]  *SYSTEM org.sonatype.nexus.scheduling.internal.PeriodicJobServiceImpl - Failed to terminate thread pool in allotted time
+2025-10-30 16:30:01,381+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumBrowseNodeDAO
+2025-10-30 16:30:01,399+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - nexus - Creating schema for YumKeyValueDAO
+2025-10-30 16:30:01,496+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.node.datastore.LocalNodeAccess - ID: 1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c
+2025-10-30 16:30:01,503+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.elasticsearch.internal.NodeProvider - Creating node with config: /opt/sonatype/nexus/etc/fabric/elasticsearch.yml
+2025-10-30 16:30:01,742+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] version[2.4.3], pid[1], build[d38a34e/2016-12-07T16:28:56Z]
+2025-10-30 16:30:01,742+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] initializing ...
+2025-10-30 16:30:01,754+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.plugins - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] modules [], plugins [content-auth-plugin], sites []
+2025-10-30 16:30:01,823+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.env - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] using [1] data paths, mounts [[/nexus-data (D:\)]], net usable_space [33.1gb], net total_space [179.9gb], spins? [possibly], types [9p]
+2025-10-30 16:30:01,824+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.env - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] heap size [2.6gb], compressed ordinary object pointers [true]
+2025-10-30 16:30:06,663+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] initialized
+2025-10-30 16:30:06,663+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] starting ...
+2025-10-30 16:30:06,668+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.transport - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] publish_address {local[1]}, bound_addresses {local[1]}
+2025-10-30 16:30:06,672+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.discovery - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] nexus/CeUTAz8VRLetBaSL_r3ZIA
+2025-10-30 16:30:06,690+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.cluster.service - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] new_master {1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c}{CeUTAz8VRLetBaSL_r3ZIA}{local}{local[1]}{local=true, master=true}, reason: local-disco-initial_connect(master)
+2025-10-30 16:30:06,697+0000 INFO  [jetty-main-1]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] started
+2025-10-30 16:30:07,020+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.gateway - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] recovered [5] indices into cluster_state
+2025-10-30 16:30:08,509+0000 INFO  [elasticsearch[1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c][clusterService#updateTask][T#1]]  *SYSTEM org.elasticsearch.cluster.routing.allocation - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] Cluster health status changed from [RED] to [GREEN] (reason: [shards started [[2e9a1e67e8a325bcd6ee9f6790ff6c769e791d56][0]] ...]).
+2025-10-30 16:30:08,601+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start RESTORE
+2025-10-30 16:30:08,605+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start UPGRADE
+2025-10-30 16:30:09,077+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.content.internal.ComponentNormalizationIntegrityChecker - validating normalized_version columns
+2025-10-30 16:30:09,281+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start SCHEMAS
+2025-10-30 16:30:09,285+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.security.model.SecurityConfigurationSourceImpl - Initializing default users
+2025-10-30 16:30:09,285+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.security.model.SecurityConfigurationSourceImpl - Initializing default roles
+2025-10-30 16:30:09,286+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.security.model.SecurityConfigurationSourceImpl - Initializing default privileges
+2025-10-30 16:30:09,286+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.security.model.SecurityConfigurationSourceImpl - Initializing default user/role mappings
+2025-10-30 16:30:09,287+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start EVENTS
+2025-10-30 16:30:09,287+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start SECURITY
+2025-10-30 16:30:09,288+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.security.internal.DefaultSecuritySystem - Unlimited strength JCE policy detected
+2025-10-30 16:30:09,293+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.security.internal.RealmManagerImpl - Loaded configuration: RealmConfigurationData{realmNames=[NexusAuthenticatingRealm, NexusAuthorizingRealm]}
+2025-10-30 16:30:09,297+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache NexusAuthenticatingRealm.authenticationCache will be supplemented by template nexus-default
+2025-10-30 16:30:09,300+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'NexusAuthenticatingRealm.authenticationCache' created in EhcacheManager.
+2025-10-30 16:30:09,300+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=NexusAuthenticatingRealm.authenticationCache
+2025-10-30 16:30:09,301+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=NexusAuthenticatingRealm.authenticationCache
+2025-10-30 16:30:09,302+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache NexusAuthorizingRealm.authorizationCache will be supplemented by template nexus-default
+2025-10-30 16:30:09,305+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'NexusAuthorizingRealm.authorizationCache' created in EhcacheManager.
+2025-10-30 16:30:09,306+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=NexusAuthorizingRealm.authorizationCache
+2025-10-30 16:30:09,306+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=NexusAuthorizingRealm.authorizationCache
+2025-10-30 16:30:09,307+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start SERVICES
+2025-10-30 16:30:09,310+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache SYSTEM_INFORMATION will be supplemented by template nexus-default
+2025-10-30 16:30:09,313+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'SYSTEM_INFORMATION' created in EhcacheManager.
+2025-10-30 16:30:09,314+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=SYSTEM_INFORMATION
+2025-10-30 16:30:09,314+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=SYSTEM_INFORMATION
+2025-10-30 16:30:09,428+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.QuartzSchedulerProvider - Quartz Scheduler v2.3.2
+2025-10-30 16:30:09,665+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: maven-central' [healthcheck] : state=WAITING
+2025-10-30 16:30:09,667+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Cleanup unused maven2 blobs from nexus' [assetBlob.cleanup] : state=WAITING
+2025-10-30 16:30:09,668+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Task log cleanup' [tasklog.cleanup] : state=WAITING
+2025-10-30 16:30:09,669+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Malicious Risk On Disk - Auto enable Health Check for proxy repositories on startup' [malicious-risk-on-disk-auto-enable-rhc] : state=WAITING
+2025-10-30 16:30:09,669+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Metric aggregation' [content.usage.aggregation] : state=WAITING
+2025-10-30 16:30:09,670+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] : state=WAITING
+2025-10-30 16:30:09,671+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Cleanup service' [repository.cleanup] : state=WAITING
+2025-10-30 16:30:09,672+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Cleanup unused nuget blobs from nexus' [assetBlob.cleanup] : state=WAITING
+2025-10-30 16:30:09,801+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start REPOSITORIES
+2025-10-30 16:30:09,812+0000 INFO  [periodic-10-thread-1]  *SYSTEM org.sonatype.nexus.internal.atlas.SystemInformationGeneratorImpl - Generating system information report
+2025-10-30 16:30:10,295+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.internal.httpclient.HttpClientManagerImpl - Using default configuration: HttpClientConfigurationData{connection=null, proxy=null, authentication=null}
+2025-10-30 16:30:10,405+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.httpclient.internal.HttpClientFacetImpl - Remote connection status of repository maven-central set to Ready to Connect.
+2025-10-30 16:30:10,414+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache maven-central#negative-cache will be supplemented by template nexus-default
+2025-10-30 16:30:10,418+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'maven-central#negative-cache' created in EhcacheManager.
+2025-10-30 16:30:10,419+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=maven-central#negative-cache
+2025-10-30 16:30:10,419+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=maven-central#negative-cache
+2025-10-30 16:30:10,548+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.repository.nuget.datastore.internal.v2.NugetV2LocalGalleryFacet - Enabled NuGet feed cooperation for nuget-hosted
+2025-10-30 16:30:10,625+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.httpclient.internal.HttpClientFacetImpl - Remote connection status of repository nuget.org-proxy set to Ready to Connect.
+2025-10-30 16:30:10,627+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache nuget.org-proxy#negative-cache will be supplemented by template nexus-default
+2025-10-30 16:30:10,630+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget.org-proxy#negative-cache' created in EhcacheManager.
+2025-10-30 16:30:10,631+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget.org-proxy#negative-cache
+2025-10-30 16:30:10,632+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget.org-proxy#negative-cache
+2025-10-30 16:30:10,636+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.repository.nuget.datastore.internal.v2.NugetV2RemoteGalleryFacet - Enabled NuGet feed cooperation for nuget.org-proxy
+2025-10-30 16:30:10,638+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache nuget.org-proxy#odata-query-cache will be supplemented by template nexus-default
+2025-10-30 16:30:10,642+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget.org-proxy#odata-query-cache' created in EhcacheManager.
+2025-10-30 16:30:10,643+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget.org-proxy#odata-query-cache
+2025-10-30 16:30:10,644+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget.org-proxy#odata-query-cache
+2025-10-30 16:30:10,697+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.httpclient.internal.HttpClientFacetImpl - Remote connection status of repository nuget-group set to Ready to Connect.
+2025-10-30 16:30:10,701+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.repository.nuget.datastore.internal.v2.NugetV2RemoteGalleryFacet - Enabled NuGet feed cooperation for nuget-group
+2025-10-30 16:30:10,702+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.ConfigurationMerger - Configuration of cache nuget-group#odata-query-cache will be supplemented by template nexus-default
+2025-10-30 16:30:10,705+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget-group#odata-query-cache' created in EhcacheManager.
+2025-10-30 16:30:10,707+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget-group#odata-query-cache
+2025-10-30 16:30:10,709+0000 INFO  [jetty-main-1]  *SYSTEM org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=nuget-group#odata-query-cache
+2025-10-30 16:30:10,747+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start CAPABILITIES
+2025-10-30 16:30:11,023+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Start TASKS
+2025-10-30 16:30:11,281+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.elasticsearch.internal.repository.IndexStartupRebuildManager - Skipping rebuild of repository indexes
+2025-10-30 16:30:11,304+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: maven-central' [healthcheck] removed
+2025-10-30 16:30:11,323+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: maven-central' [healthcheck] : state=WAITING
+2025-10-30 16:30:11,348+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'System - Repository Health Check: maven-central' [healthcheck] scheduled: hourly
+2025-10-30 16:30:11,372+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.plugins.healthcheck.service.impl.HealthCheckTaskManagerImpl - Enabled health check for repository maven-central
+2025-10-30 16:30:11,381+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] removed
+2025-10-30 16:30:11,386+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] : state=WAITING
+2025-10-30 16:30:11,393+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] scheduled: hourly
+2025-10-30 16:30:11,395+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.plugins.healthcheck.service.impl.HealthCheckTaskManagerImpl - Enabled health check for repository nuget.org-proxy
+2025-10-30 16:30:11,402+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Malicious Risk On Disk - Auto enable Health Check for proxy repositories on startup' [malicious-risk-on-disk-auto-enable-rhc] removed
+2025-10-30 16:30:11,408+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Malicious Risk On Disk - Auto enable Health Check for proxy repositories on startup' [malicious-risk-on-disk-auto-enable-rhc] : state=WAITING
+2025-10-30 16:30:11,419+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Malicious Risk On Disk - Auto enable Health Check for proxy repositories on startup' [malicious-risk-on-disk-auto-enable-rhc] scheduled: daily
+2025-10-30 16:30:11,420+0000 INFO  [jetty-main-1]  *SYSTEM com.sonatype.nexus.risk.riskondisk.MaliciousRiskOnDiskAutoEnableRHCListener - Updated malicious-risk-on-disk-auto-enable-rhc task. Starting at 2025-10-30T16:30:41.404Z.
+2025-10-30 16:30:11,438+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Metric aggregation' [content.usage.aggregation] removed
+2025-10-30 16:30:11,451+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Metric aggregation' [content.usage.aggregation] : state=WAITING
+2025-10-30 16:30:11,457+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'Metric aggregation' [content.usage.aggregation] scheduled: cron
+2025-10-30 16:30:11,464+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Metric aggregation' [content.usage.aggregation] runNow
+2025-10-30 16:30:11,471+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Metric aggregation' [content.usage.aggregation] state change WAITING -> RUNNING
+2025-10-30 16:30:11,504+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.quartz.internal.datastore.DatastoreQuartzSchedulerSPI - Scheduler put into ready mode
+2025-10-30 16:30:11,551+0000 INFO  [jetty-main-1]  *SYSTEM com.softwarementors.extjs.djn.servlet.DirectJNgineServlet - Servlet GLOBAL configuration: debug=false, providersUrl=service/extdirect, minify=false, batchRequestsMultithreadingEnabled=true, batchRequestsMinThreadsPoolSize=16, batchRequestsMaxThreadsPoolSize=80, batchRequestsMaxThreadsPerRequest=8, batchRequestsMaxThreadKeepAliveSeconds=60, gsonBuilderConfiguratorClass=org.sonatype.nexus.extdirect.internal.ExtDirectGsonBuilderConfigurator, dispatcherClass=com.softwarementors.extjs.djn.servlet.ssm.SsmDispatcher, jsonRequestProcessorThreadClass=org.sonatype.nexus.extdirect.internal.ExtDirectJsonRequestProcessorThread, contextPath=--not specified: calculated via Javascript--, createSourceFiles=true
+2025-10-30 16:30:11,555+0000 INFO  [jetty-main-1]  *SYSTEM com.softwarementors.extjs.djn.servlet.DirectJNgineServlet - Servlet GLOBAL configuration: registryConfiguratorClass=
+2025-10-30 16:30:11,557+0000 INFO  [quartz-14-thread-1]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Cleanup unused maven2 blobs from nexus' [assetBlob.cleanup] state change WAITING -> RUNNING
+2025-10-30 16:30:11,570+0000 INFO  [quartz-14-thread-2]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Cleanup unused nuget blobs from nexus' [assetBlob.cleanup] state change WAITING -> RUNNING
+2025-10-30 16:30:11,591+0000 INFO  [quartz-14-thread-1]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Cleanup unused maven2 blobs from nexus' [assetBlob.cleanup] state change RUNNING -> WAITING (OK)
+2025-10-30 16:30:11,596+0000 INFO  [quartz-14-thread-2]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Cleanup unused nuget blobs from nexus' [assetBlob.cleanup] state change RUNNING -> WAITING (OK)
+2025-10-30 16:30:11,632+0000 INFO  [jetty-main-1]  *SYSTEM com.softwarementors.extjs.djn.jscodegen.CodeFileGenerator - Creating source files for APIs...
+2025-10-30 16:30:11,702+0000 INFO  [quartz-14-thread-3]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Metric aggregation' [content.usage.aggregation] state change RUNNING -> WAITING (OK)
+2025-10-30 16:30:11,704+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.httpbridge.internal.ViewServlet - Initialized
+2025-10-30 16:30:11,705+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.repository.httpbridge.internal.ViewServlet - Initialized
+2025-10-30 16:30:12,198+0000 INFO  [jetty-main-1]  *SYSTEM org.jboss.resteasy.plugins.validation.i18n - RESTEASY008550: Unable to find CDI supporting ValidatorFactory. Using default ValidatorFactory
+2025-10-30 16:30:12,674+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.siesta.SiestaServlet - JAX-RS RuntimeDelegate: org.jboss.resteasy.spi.ResteasyProviderFactory@5e88aaa6
+2025-10-30 16:30:12,674+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.siesta.SiestaServlet - Initialized
+2025-10-30 16:30:12,675+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.server.handler.ContextHandler - Started oeje8n.ContextHandler$CoreContextHandler@3dde0d3b{Sonatype Nexus,/,b=null,a=AVAILABLE,h=oeje8n.ContextHandler$CoreContextHandler$CoreToNestedHandler@57d5dbc0{STARTED}}
+2025-10-30 16:30:12,802+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.jmx.MetaData - Getter/setter type mismatch for mbean attribute formEncodedMethods in class org.eclipse.jetty.server.HttpConfiguration, attribute will be read-only
+2025-10-30 16:30:12,913+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.server.AbstractConnector - Started ServerConnector@e57c95{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+2025-10-30 16:30:12,931+0000 INFO  [jetty-main-1]  *SYSTEM org.eclipse.jetty.server.Server - Started oejs.Server@5811a538{STARTING}[12.0.17,sto=5000] @55728ms
+2025-10-30 16:30:12,932+0000 INFO  [jetty-main-1]  *SYSTEM org.sonatype.nexus.bootstrap.entrypoint.jetty.JettyServer - 
+-------------------------------------------------
+
+Started Sonatype Nexus COMMUNITY 3.85.0-03
+
+-------------------------------------------------
+2025-10-30 16:30:13,497+0000 INFO  [qtp2079250408-32]  *UNKNOWN org.apache.shiro.session.mgt.AbstractValidatingSessionManager - Enabling session validation scheduler...
+2025-10-30 16:30:13,516+0000 INFO  [qtp2079250408-32]  *UNKNOWN org.sonatype.nexus.internal.security.anonymous.AnonymousManagerImpl - Using default configuration: AnonymousConfigurationData{enabled=true, userId='anonymous', realmName='NexusAuthorizingRealm'}
+2025-10-30 16:30:14,373+0000 INFO  [main]  *SYSTEM com.sonatype.nexus.bootstrap.entrypoint.pro.SonatypeNexusRepositoryApplication - Started SonatypeNexusRepositoryApplication in 56.003 seconds (process running for 57.17)
+2025-10-30 16:30:16,365+0000 INFO  [quartz-14-thread-4]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: maven-central' [healthcheck] state change WAITING -> RUNNING
+2025-10-30 16:30:16,379+0000 INFO  [quartz-14-thread-5]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] state change WAITING -> RUNNING
+2025-10-30 16:30:16,675+0000 INFO  [quartz-14-thread-4]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'System - Repository Health Check: maven-central' [healthcheck] scheduled: hourly
+2025-10-30 16:30:16,677+0000 INFO  [quartz-14-thread-4]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: maven-central' [healthcheck] state change RUNNING -> WAITING (OK)
+2025-10-30 16:30:16,948+0000 INFO  [quartz-14-thread-5]  *TASK org.sonatype.nexus.scheduling.TaskSchedulerImpl - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] scheduled: hourly
+2025-10-30 16:30:16,951+0000 INFO  [quartz-14-thread-5]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'System - Repository Health Check: nuget.org-proxy' [healthcheck] state change RUNNING -> WAITING (OK)
+2025-10-30 16:30:41,411+0000 INFO  [quartz-14-thread-6]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Malicious Risk On Disk - Auto enable Health Check for proxy repositories on startup' [malicious-risk-on-disk-auto-enable-rhc] state change WAITING -> RUNNING
+2025-10-30 16:30:41,415+0000 INFO  [quartz-14-thread-6]  *TASK com.sonatype.nexus.risk.riskondisk.MaliciousRiskOnDiskAutoEnableRHCTask - Starting malicious-risk-on-disk-auto-enable-rhc task
+2025-10-30 16:30:41,416+0000 INFO  [quartz-14-thread-6]  *TASK com.sonatype.nexus.risk.riskondisk.MaliciousRiskOnDiskAutoEnableRHCTask - Found 2 proxy repositories
+2025-10-30 16:30:42,101+0000 INFO  [quartz-14-thread-6]  *TASK com.sonatype.nexus.risk.riskondisk.MaliciousRiskOnDiskAutoEnableRHCTask - Completed malicious-risk-on-disk-auto-enable-rhc task
+2025-10-30 16:30:42,102+0000 INFO  [quartz-14-thread-6]  *TASK org.sonatype.nexus.quartz.internal.task.QuartzTaskInfo - Task 'Malicious Risk On Disk - Auto enable Health Check for proxy repositories on startup' [malicious-risk-on-disk-auto-enable-rhc] state change RUNNING -> WAITING (OK)
+2025-10-30 16:30:50,442+0000 INFO  [qtp2079250408-29]  *UNKNOWN org.ehcache.jsr107.ConfigurationMerger - Configuration of cache shiro-activeSessionCache will be supplemented by template nexus-default
+2025-10-30 16:30:50,448+0000 INFO  [qtp2079250408-29]  *UNKNOWN org.ehcache.core.EhcacheManager - Cache 'shiro-activeSessionCache' created in EhcacheManager.
+2025-10-30 16:30:50,449+0000 INFO  [qtp2079250408-29]  *UNKNOWN org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=shiro-activeSessionCache
+2025-10-30 16:30:50,450+0000 INFO  [qtp2079250408-29]  *UNKNOWN org.ehcache.jsr107.Eh107CacheManager - Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./opt/sonatype/nexus/etc/fabric/ehcache.xml,Cache=shiro-activeSessionCache
+2025-10-30 16:30:50,463+0000 INFO  [qtp2079250408-29]  admin org.sonatype.nexus.rapture.internal.security.SessionServlet - Created session for user: admin
+2025-10-30 16:31:25,338+0000 INFO  [qtp2079250408-30]  admin org.sonatype.nexus.internal.security.anonymous.AnonymousManagerImpl - Saving configuration: AnonymousConfigurationData{enabled=false, userId='anonymous', realmName='NexusAuthorizingRealm'}
+2025-10-30 16:48:57,919+0000 INFO  [JettyShutdownThread]  *SYSTEM org.eclipse.jetty.server.Server - Stopped oejs.Server@5811a538{STOPPING}[12.0.17,sto=5000]
+2025-10-30 16:48:57,920+0000 INFO  [JettyShutdownThread]  *SYSTEM org.eclipse.jetty.server.Server - Shutdown oejs.Server@5811a538{STOPPING}[12.0.17,sto=5000]
+2025-10-30 16:48:57,939+0000 INFO  [JettyShutdownThread]  *SYSTEM org.eclipse.jetty.server.AbstractConnector - Stopped ServerConnector@e57c95{HTTP/1.1, (http/1.1)}{0.0.0.0:8081}
+2025-10-30 16:48:57,941+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.repository.httpbridge.internal.ViewServlet - Destroyed
+2025-10-30 16:48:57,942+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.repository.httpbridge.internal.ViewServlet - Destroyed
+2025-10-30 16:48:57,942+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.siesta.SiestaServlet - Destroyed
+2025-10-30 16:48:57,949+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.internal.NexusServletContextListener - Uptime: 19 minutes 40 seconds (com.sonatype.nexus.bootstrap.entrypoint.edition.community.CommunityNexusEdition@740b6628)
+2025-10-30 16:48:57,949+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Shutting down
+2025-10-30 16:48:57,975+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Indexing lifecycle managed components up to phase TASKS
+2025-10-30 16:48:57,977+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop TASKS
+2025-10-30 16:48:58,002+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.quartz.internal.datastore.DatastoreQuartzSchedulerSPI - Scheduler put into stand-by mode
+2025-10-30 16:48:58,005+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop CAPABILITIES
+2025-10-30 16:48:58,006+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop REPOSITORIES
+2025-10-30 16:48:58,025+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop SERVICES
+2025-10-30 16:48:58,037+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'SYSTEM_INFORMATION' removed from EhcacheManager.
+2025-10-30 16:48:58,042+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'SYSTEM_INFORMATION' successfully destroyed in EhcacheManager.
+2025-10-30 16:48:58,045+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop SECURITY
+2025-10-30 16:48:58,048+0000 INFO  [JettyShutdownThread]  *SYSTEM org.apache.shiro.session.mgt.AbstractValidatingSessionManager - Disabled session validation scheduler.
+2025-10-30 16:48:58,049+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop EVENTS
+2025-10-30 16:48:58,049+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop SCHEMAS
+2025-10-30 16:48:58,050+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop UPGRADE
+2025-10-30 16:48:58,050+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop RESTORE
+2025-10-30 16:48:58,050+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop STORAGE
+2025-10-30 16:48:58,097+0000 INFO  [JettyShutdownThread]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] stopping ...
+2025-10-30 16:48:58,235+0000 INFO  [JettyShutdownThread]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] stopped
+2025-10-30 16:48:58,238+0000 INFO  [JettyShutdownThread]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] closing ...
+2025-10-30 16:48:58,292+0000 INFO  [JettyShutdownThread]  *SYSTEM org.elasticsearch.node - [1e96cfb3-e2f03643-8dbe409e-54f137e4-c939161c] closed
+2025-10-30 16:48:58,295+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget-group#odata-query-cache' removed from EhcacheManager.
+2025-10-30 16:48:58,298+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'MALICIOUS_RISK_ON_DISK_CACHE' removed from EhcacheManager.
+2025-10-30 16:48:58,299+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'shiro-activeSessionCache' removed from EhcacheManager.
+2025-10-30 16:48:58,301+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'NexusAuthenticatingRealm.authenticationCache' removed from EhcacheManager.
+2025-10-30 16:48:58,302+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'NexusAuthorizingRealm.authorizationCache' removed from EhcacheManager.
+2025-10-30 16:48:58,305+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'ENABLED_REGISTRIES' removed from EhcacheManager.
+2025-10-30 16:48:58,309+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'maven-central#negative-cache' removed from EhcacheManager.
+2025-10-30 16:48:58,310+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget.org-proxy#odata-query-cache' removed from EhcacheManager.
+2025-10-30 16:48:58,312+0000 INFO  [JettyShutdownThread]  *SYSTEM org.ehcache.core.EhcacheManager - Cache 'nuget.org-proxy#negative-cache' removed from EhcacheManager.
+2025-10-30 16:48:58,795+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.cache.internal.ehcache.EhCacheManagerProvider - Cache-manager closed
+2025-10-30 16:48:58,798+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - Shutting down H2 database
+2025-10-30 16:48:59,075+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.datastore.mybatis.MyBatisDataStore - Executed H2 SHUTDOWN command
+2025-10-30 16:48:59,247+0000 INFO  [JettyShutdownThread]  *SYSTEM com.zaxxer.hikari.HikariDataSource - nexus - Shutdown initiated...
+2025-10-30 16:48:59,265+0000 INFO  [JettyShutdownThread]  *SYSTEM com.zaxxer.hikari.HikariDataSource - nexus - Shutdown completed.
+2025-10-30 16:48:59,266+0000 INFO  [JettyShutdownThread]  *SYSTEM org.sonatype.nexus.extender.NexusLifecycleManager - Stop KERNEL

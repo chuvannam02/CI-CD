@@ -1,0 +1,33 @@
+version: '3.8'
+# 🟢 Jenkins chạy tại http://localhost:8080
+# 🟢 Local Docker registry tại localhost:5000
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Xmx512m
+    restart: unless-stopped
+ 
+  registry:
+    image: registry:2
+    container_name: registry
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+  nexus:
+    image: sonatype/nexus3:latest
+    container_name: nexus
+    ports:
+      - "9000:8081"
+    volumes:
+      - ./nexus-data:/nexus-data
+    restart: unless-stopped
