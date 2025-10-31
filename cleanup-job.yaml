@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cleanup-old-events-once
+  namespace: kube-system
+spec:
+  ttlSecondsAfterFinished: 0   # ✅ Xóa ngay Job sau khi hoàn thành
+  backoffLimit: 0              # Không retry nếu lỗi
+  template:
+    spec:
+      serviceAccountName: cleanup-events-sa
+      restartPolicy: Never     # Không restart container
+      containers:
+        - name: cleanup
+          image: bitnami/kubectl:latest
+          command:
+            - /bin/bash
+            - -c
+            - |
+              echo "Cleaning up old events older than 8 hours..."
+              kubectl get events --all-namespaces -o json \
+              | jq -r '
+                  .items[] 
+                  | select(.lastTimestamp < (now - 8*60*60 | strftime("%Y-%m-%dT%H:%M:%SZ"))) 
+                  | "kubectl delete event \(.metadata.name) -n \(.metadata.namespace)"
+                ' \
+              | bash
